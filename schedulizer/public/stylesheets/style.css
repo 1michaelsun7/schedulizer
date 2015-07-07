@@ -1,0 +1,191 @@
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+/* 
+Trigger the new block level elements in to the correct content flow
+-----------------------------------------------------------------------------*/
+article,
+aside,
+dialog,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+/* Set up document
+-----------------------------------------------------------------------------*/
+body {
+  font: 62.5%/1.5 'Cuprum', sans-serif;
+  text-align: center;
+  background: #a9a9a9;
+}
+#wrapper {
+  width: 70%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  -webkit-border-bottom-left-radius: 15px;
+  -moz-border-bottom-left-radius: 15px;
+  -o-border-bottom-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -moz-border-bottom-right-radius: 15px;
+  -o-border-bottom-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+#wrapper h1 {
+  padding: 20px;
+  font-size: 40pt;
+}
+
+/* Header
+-----------------------------------------------------------------------------*/
+header nav {
+  width: 100%;
+  text-align: right;
+  margin-left: auto;
+  margin-right: auto;
+  height:50px;
+  background: rgba(60, 60, 60, 1);
+}
+header nav ul {
+  list-style: none;
+  margin-bottom: 0;
+
+}
+header nav ul li {
+  height: 50px;
+  display: inline;
+  margin-left: 1%;
+}
+header nav ul li a {
+  font-size: 14pt;
+  display: inline-block;
+  padding: 0 15px 0;
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  line-height: 50px;
+}
+header nav ul li a:hover {
+  background-color: #87CEFA;
+}
+
+/* Side navbar
+-----------------------------------------------------------------------------*/
+.tab-container
+{
+   float: left;
+   margin: 50px 0 0 0;
+   width: 15%;
+}
+.tab-container ul
+{
+   list-style: none;
+   text-align: center;
+}
+.tab-container ul li
+{
+   border-top: 1px solid #666;
+   border-right: 1px solid #666;
+   border-bottom: 1px solid #666;
+   border-left: 8px solid #666;
+   background-color: #ddd;
+   margin: 8px 0;
+   cursor: pointer;
+   font-size: 11pt;
+}
+.tab-container ul li a,
+.tab-container ul li a:visited
+{
+   text-decoration: none;
+   color: #666;
+   display: block;
+   padding: 15px 5px;
+}
+.tab-container ul li:hover
+{
+   border-left: 8px solid #333;
+}
+.tab-container ul li a:hover
+{
+   color: #000;
+}
+.tab-container ul li.selected
+{
+   border-right: none;
+   background-color: #fff;
+   border-left: 8px solid #006699;
+}
+#categories > .inner-tab-container {
+  display: none;
+}
+
+.inner-tab-container ul li{
+  margin: 0;
+}
