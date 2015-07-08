@@ -8,16 +8,10 @@ html
     script(type='text/javascript' src='/javascripts/main.js')
   body
     header
-      nav
+      nav#mainNavbar
         ul
-          li 
-            a(href="/") Home
-          li 
-            a(href="/settings") Settings
-          li 
-            a#loginButton Log In
-    section.tab-container
-      block content1
+          block content_navbar
+    block content1
       
     section#wrapper
       block content

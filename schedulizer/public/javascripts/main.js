@@ -2,6 +2,7 @@ $(document).ready(function(){
 	$("#categories").on("mouseenter", function(){
 		$(".inner-tab-container").show();
 	});
+
 	$(".tab-container").on("mouseleave", function(){
 		$(".inner-tab-container").hide();
 	});
@@ -24,8 +25,20 @@ $(document).ready(function(){
 		});
 	});
 
+	if ($('#eventsWrapper').length){
+		var targetHeight = window.innerHeight - 2*$('#mainNavbar').height() - $('#wrapper h1').height();
+		$('#eventsWrapper').css({
+			'height': targetHeight,
+		});
+		$('#wrapper').css({
+			'width': '85%',
+		});
+	} else {
+		$('#wrapper').css({
+			'width': '100%',
+		});
+	}
 	
-
 
 });
 
