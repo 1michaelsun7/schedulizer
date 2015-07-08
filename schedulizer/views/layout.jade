@@ -3,6 +3,7 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Cuprum')
+    link(rel='stylesheet', href='/stylesheets/modals.css')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(type='text/javascript' src='/javascripts/main.js')
   body
@@ -14,8 +15,7 @@ html
           li 
             a(href="/settings") Settings
           li 
-            a Log In
-    
+            a#loginButton(href="/login") Log In
     section.tab-container
       ul
         li
@@ -26,16 +26,16 @@ html
           a My Events
         li#categories
           a Categories >
-          section.inner-tab-container
-            ul
-              li
-                a Category1
-              li
-                a Category2
-              li
-                a Category3
-              li
-                a Category4
+        section.inner-tab-container
+          ul
+            li
+              a Category1
+            li
+              a Category2
+            li
+              a Category3
+            li
+              a Category4
     section#wrapper
       block content
       

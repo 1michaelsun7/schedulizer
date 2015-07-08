@@ -148,6 +148,7 @@ header nav ul li a:hover {
 {
    list-style: none;
    text-align: center;
+   left: 0;
 }
 .tab-container ul li
 {
@@ -182,8 +183,11 @@ header nav ul li a:hover {
    background-color: #fff;
    border-left: 8px solid #006699;
 }
-#categories > .inner-tab-container {
+.inner-tab-container {
   display: none;
+  left: 100%;
+  top: -62px;
+  position: relative;
 }
 
 .inner-tab-container ul li{
