@@ -3,11 +3,11 @@ extends layout
 block content1
   ul
     li
-      a Leaderboard
+      a(href="/leaderboard") Leaderboard
     li
-      a Upcoming
+      a(href="/upcoming") Upcoming
     li
-      a My Events
+      a(href="/myEvents") My Events
     li#categories
       a Categories >
     section.inner-tab-container
@@ -23,3 +23,5 @@ block content1
 
 block content
   h1= title
+  section#eventsWrapper
+    block content2

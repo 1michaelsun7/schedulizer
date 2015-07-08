@@ -82,10 +82,11 @@ body {
   background: #a9a9a9;
 }
 #wrapper {
-  width: 70%;
+  width: 85%;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  float: right;
 /*  background: #fff;
   -webkit-border-bottom-left-radius: 15px;
   -moz-border-bottom-left-radius: 15px;
@@ -201,4 +202,19 @@ header nav ul li a:hover {
 
 .inner-tab-container ul li{
   margin: 0;
+}
+
+/*events divs
+---------------------------------------------------------------------------------------------------*/
+#eventsWrapper{
+  overflow-y: scroll;
+}
+
+.event{
+  width: 85%;
+  border: 1px solid black;
+  padding: 20px;
+  float:right;
+  margin-right: 10px;
+  height: 50px;
 }
