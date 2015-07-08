@@ -83,10 +83,10 @@ body {
 }
 #wrapper {
   width: 70%;
-  text-align: left;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
-  background: #fff;
+/*  background: #fff;
   -webkit-border-bottom-left-radius: 15px;
   -moz-border-bottom-left-radius: 15px;
   -o-border-bottom-left-radius: 15px;
@@ -94,12 +94,21 @@ body {
   -webkit-border-bottom-right-radius: 15px;
   -moz-border-bottom-right-radius: 15px;
   -o-border-bottom-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-bottom-right-radius: 15px;*/
 }
 
 #wrapper h1 {
   padding: 20px;
   font-size: 40pt;
+}
+
+#wrapper h2 {
+  font-size: 20pt;
+}
+
+#wrapper p {
+  font-size: 14pt;
+  padding-top: 10%;
 }
 
 /* Header
