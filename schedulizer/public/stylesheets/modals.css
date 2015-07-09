@@ -16,20 +16,21 @@
 .modal {
     position: fixed;
     width: 60%;
-    height: 50%;
+    height: 65%;
     display:none;
     z-index: 1001;
     padding: 20px;
     box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.5);
     background-color: white;
     left: 20%;
-    top: 25%;
+    top: 18%;
     overflow: auto;
     border-radius: 5px;
-    font-family: 'Shadows Into Light', cursive;
     font-size: 16pt;
+    text-align: left;
 }
 
 .modal a {
     cursor: pointer;
 }
+
