@@ -1,17 +1,16 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var passport = require('passport');
+var express  = require('express');
+var app      = express();
+var path     = require('path');
 var mongoose = require('mongoose');
-var session = require('express-session');
+var passport = require('passport');
 var flash    = require('connect-flash');
 
-var app = express();
+var logger       = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var session      = require('express-session');
 
-var configDB = require('./config/db.js');
+var configDB = require('./config/database.js');
 
 // configuration 
 mongoose.connect(configDB.url);

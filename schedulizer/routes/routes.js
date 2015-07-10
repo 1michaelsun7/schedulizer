@@ -1,7 +1,7 @@
 module.exports = function(app, passport) {
 
 	app.get('/', function(req, res, next) {
-	  res.render('index', { title: '[insert some dumb shit here]' });
+	  res.render('index', { title: 'After Three' });
 	});
 
 	app.get('/event', function(req, res, next) {
@@ -11,6 +11,11 @@ module.exports = function(app, passport) {
 	app.get('/leaderboard', function(req, res, next) {
 	  res.render('leaderboard', { title: 'Leaderboard' });
 	});
+
+	app.get('/logout', function(req, res) {
+        // req.logout();
+        res.redirect('/');
+    });
 
 	app.get('/main', function(req, res, next) {
 	  res.render('main', { title: 'Main Page' });
@@ -34,15 +39,10 @@ module.exports = function(app, passport) {
         res.redirect('/main');
     });
 
-	app.get('/logout', function(req, res) {
-        // req.logout();
-        res.redirect('/');
-    });
-
     app.post('/signup', function(req, res) {
         passport.authenticate('local-signup', {
         	successRedirect : '/main',
-        	failureRedirect : '/',
+        	failureRedirect : '/index',
         	failureFlash: true
         });
     });

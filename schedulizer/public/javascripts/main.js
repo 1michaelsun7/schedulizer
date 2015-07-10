@@ -66,11 +66,7 @@ function createModals(){
 
 function createSignUpModal(){
 	$('.modal').append("<h2><span class='fa fa-sign-in'></span>  Sign Up!</h2>");
-	$('.modal').append("<form action='/signup' method='post'>"+
-		"<div class='form-group'>" +
-            "<label>Name</label>" +
-            "<input type='text' class='form-control' name='name'>" +
-        "</div>" +
+	$('.modal').append("<form action='/signup' method='post'>" +
         "<div class='form-group'>" +
             "<label>Email</label>" +
             "<input type='email' class='form-control' name='email'>" +
@@ -78,10 +74,6 @@ function createSignUpModal(){
         "<div class='form-group'>" +
             "<label>Password</label>" +
             "<input type='password' class='form-control' name='password'>" +
-        "</div>" +
-        "<div class='form-group'>" +
-            "<label>Confirm Password</label>" +
-            "<input type='password' class='form-control' name='confirmPassword'>" +
         "</div>" +
 		"<button type='submit' class='btn btn-lg'>Sign Up!</button>" +
     "</form>");

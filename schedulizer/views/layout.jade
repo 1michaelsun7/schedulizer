@@ -8,12 +8,13 @@ html
     link(rel='stylesheet', href='/stylesheets/modals.css')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
     script(type='text/javascript' src='/javascripts/main.js')
+    block content_scripts
   body
     header
       nav#mainNavbar
         ul
           block content_navbar
-    block content1
+    block content_sidebar
       
     section#wrapper
       block content
