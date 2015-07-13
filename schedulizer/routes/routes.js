@@ -1,3 +1,13 @@
+var isAuthenticated = function (req, res, next) {
+	// if user is authenticated in the session, call the next() to call the next request handler 
+	// Passport adds this method to request object. A middleware is allowed to add properties to
+	// request and response objects
+	if (req.isAuthenticated())
+		return next();
+	// if the user is not authenticated then redirect him to the login page
+	res.redirect('/');
+}
+
 module.exports = function(app, passport) {
 
 	app.get('/', function(req, res, next) {
@@ -13,7 +23,7 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/logout', function(req, res) {
-        // req.logout();
+        req.logout();
         res.redirect('/');
     });
 
@@ -34,18 +44,17 @@ module.exports = function(app, passport) {
 	});
 
 	//LOGIN AND LOGOUT
-	app.post('/login', function(req, res) {
-        // req.login();
-        res.redirect('/main');
-    });
+	app.post('/login', passport.authenticate('login', {
+		successRedirect: '/main',
+		failureRedirect: '/',
+		failureFlash : true  
+	}));
 
-    app.post('/signup', function(req, res) {
-        passport.authenticate('local-signup', {
-        	successRedirect : '/main',
-        	failureRedirect : '/index',
-        	failureFlash: true
-        });
-    });
+    app.post('/signup', passport.authenticate('signup', {
+		successRedirect: '/main',
+		failureRedirect: '/',
+		failureFlash : true  
+	}));
 
 	app.get('/', function(req, res, next) {
 	  res.send('respond with a resource');

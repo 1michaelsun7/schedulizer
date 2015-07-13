@@ -25,6 +25,9 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
 
+var initPassport = require('./passport/init');
+initPassport(passport);
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -36,8 +39,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routing
 require('./routes/routes.js')(app, passport);
-
-require('./config/passport')(passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
