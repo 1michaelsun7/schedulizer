@@ -268,7 +268,7 @@ header nav ul li a:hover {
 
 .event .col-xs-3 {
   text-align: left !important;
-  width: 30%;
+  width: 40%;
 }
 
 .eventTitle {
@@ -286,6 +286,18 @@ header nav ul li a:hover {
 }
 
 .upvotes {
+  font-size: 14pt;
+}
+
+.sponsorName {
+  font-size: 16pt;
+}
+
+.studentHidden{
+  font-size: 16pt;
+}
+
+.happening {
   font-size: 14pt;
 }
 

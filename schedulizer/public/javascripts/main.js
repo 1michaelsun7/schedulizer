@@ -55,10 +55,18 @@ $(document).ready(function(){
 			if (target.hasClass('btn-default')){
 				target.removeClass('btn-default');
 				target.addClass('btn-success');
+				if (target.attr('id') == "sponsorThis"){
+					target.html("You are the sponsor");
+				}
 			} else {
 				target.removeClass('btn-success');
 				target.addClass('btn-default');
+				if (target.attr('id') == "sponsorThis"){
+					target.html("Sponsor this event!");
+				}
 			}
+
+
 			
 		} else {
 			document.location.href = '/event';
