@@ -52,8 +52,14 @@ $(document).ready(function(){
 	$('.event').on("click", function(e){
 		var target = $(e.target);
 		if (target.is('.btn')){
-			$('.thumbsUp a').removeClass('btn-default');
-			$('.thumbsUp a').addClass('btn-success');
+			if (target.hasClass('btn-default')){
+				target.removeClass('btn-default');
+				target.addClass('btn-success');
+			} else {
+				target.removeClass('btn-success');
+				target.addClass('btn-default');
+			}
+			
 		} else {
 			document.location.href = '/event';
 		}

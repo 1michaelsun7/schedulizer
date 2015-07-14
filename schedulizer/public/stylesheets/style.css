@@ -181,6 +181,7 @@ header nav ul li a:hover {
    float: left;
    margin: 50px 0 0 0;
    width: 15%;
+   z-index: 2015;
 }
 .tab-container ul
 {
@@ -260,9 +261,14 @@ header nav ul li a:hover {
   height: 400px;
 }
 
-.col-xs-4 {
+.event .col-xs-4 {
   text-align: left !important;
   width: 40%;
+}
+
+.event .col-xs-3 {
+  text-align: left !important;
+  width: 30%;
 }
 
 .eventTitle {
@@ -271,4 +277,27 @@ header nav ul li a:hover {
 
 .eventDesc {
   font-size: 16pt;
+}
+
+.rank {
+  font-size: 16pt;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.upvotes {
+  font-size: 14pt;
+}
+
+/*forms*/
+#eventsWrapper .form-control {
+  width: 42% !important;
+  margin-left: 5%;
+  margin-bottom: 2%;
+}
+
+#eventsWrapper .btn-lg {
+  width: 42% !important;
+  margin-left: 5%;
+  margin-bottom: 2%;
 }

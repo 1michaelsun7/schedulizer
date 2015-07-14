@@ -2,3 +2,11 @@ extends main
 
 block content
   h1= title
+
+  form(class='form-suggest', action='/suggest', method='POST')
+    input(type='text', name='event', class='form-control', placeholder='Event Name',required, autofocus)
+    br
+    input(type='text', name='description', class='form-control', placeholder='Description', required)
+    br
+    button(class='btn btn-lg btn-primary btn-block', type='submit') Submit!
+    span.clearfix

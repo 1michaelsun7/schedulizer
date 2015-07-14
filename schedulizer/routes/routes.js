@@ -56,6 +56,11 @@ module.exports = function(app, passport) {
 		failureFlash : true  
 	}));
 
+	//suggest event
+	app.post('/suggest', function(req, res, next){
+		res.redirect('/event');
+	});
+
 	app.get('/', function(req, res, next) {
 	  res.send('respond with a resource');
 	});
