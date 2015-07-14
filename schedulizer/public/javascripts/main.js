@@ -65,12 +65,19 @@ $(document).ready(function(){
 					target.html("Sponsor this event!");
 				}
 			}
-
-
-			
 		} else {
 			document.location.href = '/event';
 		}
+	});
+
+	$('#viewPastEvents').on("click", function(){
+		$('#viewPastEvents').hide();
+		$('#viewAllEvents').show();
+	});
+
+	$('#viewAllEvents').on("click", function(){
+		$('#viewPastEvents').show();
+		$('#viewAllEvents').hide();
 	});
 
 	$(window).on('resize', function(){

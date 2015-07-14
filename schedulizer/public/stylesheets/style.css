@@ -301,6 +301,17 @@ header nav ul li a:hover {
   font-size: 14pt;
 }
 
+#viewPastEvents {
+  float:right;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+#viewAllEvents {
+  float:right;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: none;
+}
 /*forms*/
 #eventsWrapper .form-control {
   width: 42% !important;
