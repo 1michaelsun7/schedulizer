@@ -14,12 +14,12 @@ module.exports = function(app, passport) {
 	  res.render('index', { title: 'After Three', message: req.flash('message') });
 	});
 
-	app.get('/event', function(req, res, next) {
-	  res.render('event', { title: 'Event Title' });
+	app.get('/event', isAuthenticated, function(req, res, next) {
+	  res.render('event', { title: 'Event Title', user: req.user  });
 	});
 
-	app.get('/leaderboard', function(req, res, next) {
-	  res.render('leaderboard', { title: 'Leaderboard' });
+	app.get('/leaderboard', isAuthenticated, function(req, res, next) {
+	  res.render('leaderboard', { title: 'Leaderboard', user: req.user  });
 	});
 
 	app.get('/logout', function(req, res) {
@@ -31,16 +31,16 @@ module.exports = function(app, passport) {
 	  res.render('main', { title: 'Main Page', user: req.user });
 	});
 
-	app.get('/myEvents', function(req, res, next) {
-	  res.render('myEvents', { title: 'My Extracurriculars' });
+	app.get('/myEvents', isAuthenticated, function(req, res, next) {
+	  res.render('myEvents', { title: 'My Extracurriculars', user: req.user  });
 	});
 
-	app.get('/suggest', function(req, res, next) {
-	  res.render('suggest', { title: 'Suggest an Extracurricular!' });
+	app.get('/suggest', isAuthenticated, function(req, res, next) {
+	  res.render('suggest', { title: 'Suggest an Extracurricular!', user: req.user  });
 	});
 
-	app.get('/upcoming', function(req, res, next) {
-	  res.render('upcoming', { title: 'Upcoming Extracurriculars' });
+	app.get('/upcoming', isAuthenticated, function(req, res, next) {
+	  res.render('upcoming', { title: 'Upcoming Extracurriculars', user: req.user  });
 	});
 
 	//LOGIN AND LOGOUT

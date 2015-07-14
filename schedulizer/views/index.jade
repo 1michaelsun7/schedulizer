@@ -5,15 +5,13 @@ block content
 
   h2 Catchy slogan about the site
 
-  h2.text-center.error-message #{message}
+  #message
+    if message
+      h2.text-center.error-message #{message}
 
   p Not a user yet?
   input#signupButton(type='button', value='Sign up now')
-
-  #message
-    if message
-
-
+  
 block content_navbar
   li 
     a#loginButton Log In

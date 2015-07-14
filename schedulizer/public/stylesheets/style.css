@@ -238,6 +238,10 @@ header nav ul li a:hover {
   overflow-y: scroll;
 }
 
+#eventsWrapper .mix {
+  display: none;
+}
+
 .event{
   width: 90%;
   border: 1px solid black;
@@ -254,4 +258,17 @@ header nav ul li a:hover {
   float:right;
   margin-right: 10px;
   height: 400px;
+}
+
+.col-xs-4 {
+  text-align: left !important;
+  width: 40%;
+}
+
+.eventTitle {
+  font-size: 20pt;
+}
+
+.eventDesc {
+  font-size: 16pt;
 }

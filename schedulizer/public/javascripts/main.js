@@ -48,9 +48,55 @@ $(document).ready(function(){
 			'font-size': '40pt'
 		});
 	}
-	
-	$('.event').on("click", function(){
-		document.location.href = '/event';
+
+	$('.event').on("click", function(e){
+		var target = $(e.target);
+		if (target.is('.btn')){
+			$('.thumbsUp a').removeClass('btn-default');
+			$('.thumbsUp a').addClass('btn-success');
+		} else {
+			document.location.href = '/event';
+		}
+	});
+
+	$(window).on('resize', function(){
+		if ($(window).width() < 700){
+			$('.tab-container').css({
+				'width': 'auto',
+			});
+			$('#wrapper').css({
+				'width': ($(window).width() - $('.tab-container').width() + 'px'),
+			});
+		} else {
+			if ($('.tab-container').length){
+				$('.tab-container').css({
+					'width': '15%',
+				});
+				$('#wrapper').css({
+					'width': '85%',
+				});
+				$('#wrapper h1').css({
+					'font-size': '28pt'
+				});
+			} else {
+				$('#wrapper').css({
+					'width': '100%',
+				});
+				$('#wrapper h1').css({
+					'font-size': '40pt'
+				});
+			}
+		}
+
+		if ($(window).width() < 500){
+			if ($('#helloMessage').length){
+				$('#helloMessage').hide();
+			}
+		} else {
+			if ($('#helloMessage').length){
+				$('#helloMessage').show();
+			}
+		}
 	});
 });
 
