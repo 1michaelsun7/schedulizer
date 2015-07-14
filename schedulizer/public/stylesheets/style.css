@@ -128,6 +128,11 @@ body {
   padding-top: 10%;
 }
 
+.error-message {
+  margin-top: 10%;
+  color: red;
+}
+
 /* Header
 -----------------------------------------------------------------------------*/
 header nav {
@@ -160,6 +165,13 @@ header nav ul li a {
 }
 header nav ul li a:hover {
   background-color: #87CEFA;
+}
+
+#helloMessage:hover{
+  background-color: rgba(60, 60, 60, 1);
+  cursor: default;
+  color: #fff;
+  text-decoration: none;
 }
 
 /* Side navbar

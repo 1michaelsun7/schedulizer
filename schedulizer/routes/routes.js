@@ -11,7 +11,7 @@ var isAuthenticated = function (req, res, next) {
 module.exports = function(app, passport) {
 
 	app.get('/', function(req, res, next) {
-	  res.render('index', { title: 'After Three' });
+	  res.render('index', { title: 'After Three', message: req.flash('message') });
 	});
 
 	app.get('/event', function(req, res, next) {
@@ -27,8 +27,8 @@ module.exports = function(app, passport) {
         res.redirect('/');
     });
 
-	app.get('/main', function(req, res, next) {
-	  res.render('main', { title: 'Main Page' });
+	app.get('/main', isAuthenticated, function(req, res, next) {
+	  res.render('main', { title: 'Main Page', user: req.user });
 	});
 
 	app.get('/myEvents', function(req, res, next) {

@@ -1,12 +1,15 @@
 extends layout
 
 block content_navbar
-  li 
-    a(href="/main") Home
-  li
-    a(href="/suggest") Suggest
-  li 
-    a(href="/logout") Log Out
+  #user
+    li#helloMessage
+      a#helloMessage Hello, #{user.name}!
+    li 
+      a(href="/main") Home
+    li
+      a(href="/suggest") Suggest
+    li 
+      a(href="/logout") Log Out
 
 block content_sidebar
   section.tab-container

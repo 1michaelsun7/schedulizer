@@ -55,8 +55,6 @@ $(document).ready(function(){
 });
 
 function createModals(){
-	$(document.body).append("<div class='greyedOutOverlay'></div>");
-	$(document.body).append("<div class='modal'></div>");
 	$(".greyedOutOverlay").fadeIn("slow", function(){ 
 		$('.modal').fadeIn(function(){
 			
@@ -67,13 +65,17 @@ function createModals(){
 function createSignUpModal(){
 	$('.modal').append("<h2><span class='fa fa-sign-in'></span>  Sign Up!</h2>");
 	$('.modal').append("<form action='/signup' method='post'>" +
+		"<div class='form-group'>" +
+            "<label>Name</label>" +
+            "<input type='text' class='form-control' name='name' required>" +
+        "</div>" +
         "<div class='form-group'>" +
             "<label>Email</label>" +
-            "<input type='email' class='form-control' name='email'>" +
+            "<input type='email' class='form-control' name='email' required>" +
         "</div>" +
         "<div class='form-group'>" +
             "<label>Password</label>" +
-            "<input type='password' class='form-control' name='password'>" +
+            "<input type='password' class='form-control' name='password' required>" +
         "</div>" +
 		"<button type='submit' class='btn btn-lg'>Sign Up!</button>" +
     "</form>");
@@ -96,14 +98,13 @@ function createLogInModal(){
 		"<button type='submit' class='btn btn-lg'>Login</button>" +
     "</form>");
 	$('a#createAccount').on("click", function(){
-		$('.modal').remove();
-		$(document.body).append("<div class='modal'></div>");
-		$('.modal').show();
+		$('.modal').empty();
 		createSignUpModal();
 	});
 }
 
 function removeModals(){
-	$('.modal').remove();
-	$('.greyedOutOverlay').remove();
+	$('.modal').empty();
+	$('.modal').hide();
+	$('.greyedOutOverlay').hide();
 }
