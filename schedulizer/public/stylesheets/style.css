@@ -245,15 +245,18 @@ header nav ul li a:hover {
 
 .event{
   width: 90%;
+  min-width: 750px;
   border: 1px solid black;
   padding: 20px;
   float:right;
   margin-right: 10px;
   height: 150px;
+  cursor: pointer;
 }
 
 .singleEvent{
   width: 90%;
+  min-width: 750px;
   border: 1px solid black;
   padding: 20px;
   float:right;
@@ -290,7 +293,7 @@ header nav ul li a:hover {
 }
 
 .sponsorName {
-  font-size: 16pt;
+  font-size: 14pt;
 }
 
 .studentHidden{
@@ -313,13 +316,13 @@ header nav ul li a:hover {
   display: none;
 }
 /*forms*/
-#eventsWrapper .form-control {
+.form-suggest .form-control {
   width: 42% !important;
   margin-left: 5%;
   margin-bottom: 2%;
 }
 
-#eventsWrapper .btn-lg {
+.form-suggest .btn-lg {
   width: 42% !important;
   margin-left: 5%;
   margin-bottom: 2%;
