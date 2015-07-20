@@ -76,11 +76,19 @@ section {
 }
 /* Set up document
 -----------------------------------------------------------------------------*/
+/* fonts */
+@font-face {
+  font-family: aller_reg
+  src: url('/fonts/Aller/Aller_Rg.ttf');
+}
+
 
 body {
   font: 62.5%/1.5 'Helvetica Neue', sans-serif;
   text-align: center;
   background: #a9a9a9;
+  background-image: url("stardust.png");
+  font-family: aller_reg;
 /*  -webkit-transition: 1s ease-in-out;
   -moz-transition: 1s ease-in-out;
   -o-transition: 1s ease-in-out;
@@ -101,7 +109,10 @@ body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  padding-top: 100px;
   float: right;
+  color: white;
+
 
 /*  background: #fff;
   -webkit-border-bottom-left-radius: 15px;
@@ -270,6 +281,16 @@ header nav ul li a:hover {
   height: 400px;
 }
 
+
+#mainNavbar {
+  background-color: white;
+  opacity: 0.3;
+}
+
+#loginButton {
+  color: black;
+}
+
 .event .col-xs-4 {
   text-align: left !important;
   width: 40%;
@@ -333,3 +354,4 @@ header nav ul li a:hover {
   margin-left: 5%;
   margin-bottom: 2%;
 }
+
