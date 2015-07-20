@@ -309,7 +309,6 @@ header nav ul li a:hover {
 }
 
 .studentHidden{
-  font-size: 16pt;
 }
 
 .happening {
@@ -327,6 +326,52 @@ header nav ul li a:hover {
   margin-bottom: 5px;
   display: none;
 }
+
+/*single event*/
+
+#add-website {
+  float:right;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
+.website-link {
+    text-align: center;
+    position: absolute;
+    width: 200px;
+    height: 180px;
+    text-decoration: none;
+}
+
+.website-link:hover {
+  text-decoration: none;
+}
+
+.website-url{
+    vertical-align: top;
+    width: 200px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+}
+
+#website-url{
+    width: 475px;
+}
+.website-image {
+    width: 200px;
+    vertical-align: top;
+}
+
+#add-website-modal-label {
+  color: black;
+}
+
+#add-website-error-msg {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
 /*forms*/
 .form-suggest .form-control {
   width: 42% !important;
