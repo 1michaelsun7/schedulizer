@@ -1,12 +1,16 @@
 extends layout
 
 block content_navbar
-  li 
-    a(href="/main") Home
-  li
-    a(href="/suggest") Suggest
-  li 
-    a(href="/logout") Log Out
+  #user
+    if user.name
+      li
+        a#helloMessage Hello, #{user.name}!
+    li 
+      a(href="/main") Home
+    li
+      a(href="/suggest") Suggest
+    li 
+      a(href="/logout") Log Out
 
 block content_sidebar
   section.tab-container
@@ -22,15 +26,25 @@ block content_sidebar
       section.inner-tab-container
         ul
           li
-            a Category1
+            a.filter(data-filter='.category1') Category1
           li
-            a Category2
+            a.filter(data-filter='.category2') Category2
           li
-            a Category3
+            a.filter(data-filter='.category3') Category3
           li
-            a Category4
+            a.filter(data-filter='.category4') Category4
 
 block content
   h1= title
+  block content_extra
+  div(style="clear:right;")
   section#eventsWrapper
     block content2
+
+block content_scripts
+  script(type='text/javascript').
+    $(function(){
+
+      $('#eventsWrapper').mixItUp();
+
+    });

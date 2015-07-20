@@ -7,6 +7,7 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/modals.css')
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js')
+    script(src='http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js')
     script(type='text/javascript' src='/javascripts/main.js')
     block content_scripts
   body
@@ -16,6 +17,8 @@ html
           block content_navbar
     block content_sidebar
       
-    section#wrapper
+    div#wrapper
       block content
+
+    block content_modal
       

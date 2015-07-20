@@ -1,14 +1,21 @@
 extends layout
 
 block content
-  h1= title
+  img#afterthreelogo(src='../images/afterthree_logo.png')
 
   h2 some catch slogan
 
+  #message
+    if message
+      h2.text-center.error-message #{message}
+
   p Not a user yet?
   input#signupButton(type='button', value='Sign up now')
-
-
+  
 block content_navbar
   li 
     a#loginButton Log In
+
+block content_modal
+  div.greyedOutOverlay
+  div.modal

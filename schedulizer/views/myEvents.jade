@@ -1,17 +1,33 @@
 extends main
 
 block content2
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	section.event
-	
+	section.event.mix.category1.attended
+		div.col-xs-2
+			div.thumbsUp 
+				a.btn.btn-default(href='#', role='button') I like it!
+			div.rank 1
+			div.upvotes 
+				span.glyphicon.glyphicon-arrow-up 153
+		div.col-xs-4
+			div.eventTitle Event Title
+			div.eventDesc Event Description
+		div.col-xs-3
+			a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+			div.sponsorName Sponsor: Mrs. Derpenstein
+			div.happening Date Happening: October 15
+	section.event.mix.category2
+	section.event.mix.category3.attended
+	section.event.mix.category4
+	section.event.mix.category1
+	section.event.mix.category2
+	section.event.mix.category3
+	section.event.mix.category4.attended
+	section.event.mix.category1.attended
+	section.event.mix.category2
+	section.event.mix.category3.attended
+	section.event.mix.category4
+	section.event.mix.category1
+
+block content_extra
+	a#viewPastEvents.filter.btn.btn-default(href='#', data-filter='.attended', role='button') View Past Events
+	a#viewAllEvents.filter.btn.btn-default(href='#', data-filter='all', role='button') View All Events

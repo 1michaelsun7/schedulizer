@@ -48,15 +48,80 @@ $(document).ready(function(){
 			'font-size': '40pt'
 		});
 	}
-	
-	$('.event').on("click", function(){
-		document.location.href = '/event';
+
+	$('.event').on("click", function(e){
+		var target = $(e.target);
+		if (target.is('.btn')){
+			if (target.hasClass('btn-default')){
+				target.removeClass('btn-default');
+				target.addClass('btn-success');
+				if (target.attr('id') == "sponsorThis"){
+					target.html("You are the sponsor");
+				}
+			} else {
+				target.removeClass('btn-success');
+				target.addClass('btn-default');
+				if (target.attr('id') == "sponsorThis"){
+					target.html("Sponsor this event!");
+				}
+			}
+		} else {
+			document.location.href = '/event';
+		}
+	});
+
+	$('#viewPastEvents').on("click", function(){
+		$('#viewPastEvents').hide();
+		$('#viewAllEvents').show();
+	});
+
+	$('#viewAllEvents').on("click", function(){
+		$('#viewPastEvents').show();
+		$('#viewAllEvents').hide();
+	});
+
+	$(window).on('resize', function(){
+		if ($(window).width() < 700){
+			$('.tab-container').css({
+				'width': 'auto',
+			});
+			$('#wrapper').css({
+				'width': ($(window).width() - $('.tab-container').width() + 'px'),
+			});
+		} else {
+			if ($('.tab-container').length){
+				$('.tab-container').css({
+					'width': '15%',
+				});
+				$('#wrapper').css({
+					'width': '85%',
+				});
+				$('#wrapper h1').css({
+					'font-size': '28pt'
+				});
+			} else {
+				$('#wrapper').css({
+					'width': '100%',
+				});
+				$('#wrapper h1').css({
+					'font-size': '40pt'
+				});
+			}
+		}
+
+		if ($(window).width() < 500){
+			if ($('#helloMessage').length){
+				$('#helloMessage').hide();
+			}
+		} else {
+			if ($('#helloMessage').length){
+				$('#helloMessage').show();
+			}
+		}
 	});
 });
 
 function createModals(){
-	$(document.body).append("<div class='greyedOutOverlay'></div>");
-	$(document.body).append("<div class='modal'></div>");
 	$(".greyedOutOverlay").fadeIn("slow", function(){ 
 		$('.modal').fadeIn(function(){
 			
@@ -67,13 +132,17 @@ function createModals(){
 function createSignUpModal(){
 	$('.modal').append("<h2><span class='fa fa-sign-in'></span>  Sign Up!</h2>");
 	$('.modal').append("<form action='/signup' method='post'>" +
+		"<div class='form-group'>" +
+            "<label>Name</label>" +
+            "<input type='text' class='form-control' name='name' required>" +
+        "</div>" +
         "<div class='form-group'>" +
             "<label>Email</label>" +
-            "<input type='email' class='form-control' name='email'>" +
+            "<input type='email' class='form-control' name='email' required>" +
         "</div>" +
         "<div class='form-group'>" +
             "<label>Password</label>" +
-            "<input type='password' class='form-control' name='password'>" +
+            "<input type='password' class='form-control' name='password' required>" +
         "</div>" +
 		"<button type='submit' class='btn btn-lg'>Sign Up!</button>" +
     "</form>");
@@ -96,14 +165,13 @@ function createLogInModal(){
 		"<button type='submit' class='btn btn-lg'>Login</button>" +
     "</form>");
 	$('a#createAccount').on("click", function(){
-		$('.modal').remove();
-		$(document.body).append("<div class='modal'></div>");
-		$('.modal').show();
+		$('.modal').empty();
 		createSignUpModal();
 	});
 }
 
 function removeModals(){
-	$('.modal').remove();
-	$('.greyedOutOverlay').remove();
+	$('.modal').empty();
+	$('.modal').hide();
+	$('.greyedOutOverlay').hide();
 }
