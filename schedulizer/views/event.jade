@@ -1,4 +1,28 @@
 extends main
 
 block content2
-	section.singleEvent
+	div.singleEvent
+
+
+block content_extra
+	a#add-website.btn.btn-default.studentHidden(role='button') Add Content
+
+block content_scripts
+	script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')
+	script(type='text/javascript' src='/javascripts/addcontent.js')
+
+
+block content_modal
+	div.greyedOutOverlay
+	#add-website-modal.modal(tabindex='-1', role='dialog', aria-labelledby='add-website-modal', aria-hidden='true')
+		button.close(type='button')
+			span(aria-hidden='true') ×
+		h4#add-website-modal-label.modal-title Add Website
+		label(for='newWebsite') Website URL:
+		.input-group
+			span#url-beginning.input-group-addon http://www.
+			input#website-url.form-control(type='text', aria-describedby='url-beginning', autocomplete='off')
+		br
+		p#add-website-error-msg.error-message
+		button#cancel-add-website.btn.btn-default.pull-right(type='button') Cancel
+		button#add-website-btn.btn.btn-primary.pull-right(type='submit') Add
