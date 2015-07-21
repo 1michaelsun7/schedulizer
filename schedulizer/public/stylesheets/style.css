@@ -78,17 +78,22 @@ section {
 -----------------------------------------------------------------------------*/
 /* fonts */
 @font-face {
-  font-family: aller_reg
-  src: url('/fonts/Aller/Aller_Rg.ttf');
+  font-family: allerreg;
+  src: url('/fonts/Aller/Aller_Rg.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: LeagueGothic;
+  src: url('/fonts/LeagueGothic-Regular.otf') format('opentype');
 }
 
 
 body {
-  font: 62.5%/1.5 'Helvetica Neue', sans-serif;
+  /*font: 62.5%/1.5 'Helvetica Neue', sans-serif;*/
   text-align: center;
   background: #a9a9a9;
-  background-image: url("stardust.png");
-  font-family: aller_reg;
+  background-image: url("backgrounds/old_moon.jpg");
+  font-family: Palatino;
 /*  -webkit-transition: 1s ease-in-out;
   -moz-transition: 1s ease-in-out;
   -o-transition: 1s ease-in-out;
@@ -109,10 +114,9 @@ body {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 100px;
   float: right;
-  color: white;
-
+  color: black;
+  font-family: Palatino;
 
 /*  background: #fff;
   -webkit-border-bottom-left-radius: 15px;
@@ -123,6 +127,10 @@ body {
   -moz-border-bottom-right-radius: 15px;
   -o-border-bottom-right-radius: 15px;
   border-bottom-right-radius: 15px;*/
+}
+
+.index {
+  margin-top: 100px;
 }
 
 #wrapper h1 {
@@ -142,6 +150,19 @@ body {
 .error-message {
   margin-top: 10%;
   color: red;
+}
+
+
+#mainNavbar {
+  background-color: gray;
+  opacity: 0.3;
+  height: 70px;
+}
+
+#loginButton {
+  color: black;
+  text-align: center;
+  height: 70px;
 }
 
 /* Header
@@ -186,8 +207,9 @@ header nav ul li a:hover {
 }
 
 #afterthreelogo {
+  float: left;
   margin: 0 auto;
-  height: 20%;
+  height: 100%;
   width: auto;
 }
 
@@ -279,16 +301,6 @@ header nav ul li a:hover {
   float:right;
   margin-right: 10px;
   height: 400px;
-}
-
-
-#mainNavbar {
-  background-color: white;
-  opacity: 0.3;
-}
-
-#loginButton {
-  color: black;
 }
 
 .event .col-xs-4 {
