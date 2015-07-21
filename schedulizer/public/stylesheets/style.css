@@ -94,6 +94,7 @@ body {
   background: #a9a9a9;
   background-image: url("backgrounds/old_moon.jpg");
   font-family: Palatino;
+
 /*  -webkit-transition: 1s ease-in-out;
   -moz-transition: 1s ease-in-out;
   -o-transition: 1s ease-in-out;
@@ -298,7 +299,6 @@ header nav ul li a:hover {
   background-color: white;
   opacity: 0.3;
 }
-
 
 .event .col-xs-4 {
   text-align: left !important;
