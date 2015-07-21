@@ -5,7 +5,8 @@ block content2
 
 
 block content_extra
-	a#add-website.btn.btn-default.studentHidden(role='button') Add Content
+	if user.isAdmin || user.isSuperAdmin
+		a#add-website.btn.btn-default.studentHidden(role='button') Add Content
 
 block content_scripts
 	script(src='//code.jquery.com/ui/1.11.4/jquery-ui.js')

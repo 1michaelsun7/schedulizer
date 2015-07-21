@@ -32,6 +32,12 @@ module.exports = function(passport){
                         newUser.email = email;
                         newUser.password = createHash(password);
                         newUser.name = req.param('name');
+                        newUser.isAdmin = false;
+                        if (email == "adoptapuppy@mit.edu"){
+                            newUser.isSuperAdmin = true;
+                        } else {
+                            newUser.isSuperAdmin = false;
+                        }
 
                         // save the user
                         newUser.save(function(err) {

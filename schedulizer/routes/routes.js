@@ -1,3 +1,6 @@
+var events = require("../models/event.js");
+var contents = require("../models/content.js");
+
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
 	// Passport adds this method to request object. A middleware is allowed to add properties to
@@ -14,12 +17,17 @@ module.exports = function(app, passport) {
 	  res.render('index', { title: 'After Three', message: req.flash('message') });
 	});
 
+	app.get('/admincenter', isAuthenticated, function(req, res, next) {
+	  res.render('admincenter', { title: 'After Three Admin Center' });
+	});
+
 	app.get('/event', isAuthenticated, function(req, res, next) {
-	  res.render('event', { title: 'Event Title', user: req.user  });
+	  console.log(req);
+	  res.render('event', { title: 'Event Title', user: req.user });
 	});
 
 	app.get('/leaderboard', isAuthenticated, function(req, res, next) {
-	  res.render('leaderboard', { title: 'Leaderboard', user: req.user  });
+	  res.render('leaderboard', { title: 'Leaderboard', user: req.user });
 	});
 
 	app.get('/logout', function(req, res) {
@@ -32,15 +40,15 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/myEvents', isAuthenticated, function(req, res, next) {
-	  res.render('myEvents', { title: 'My Extracurriculars', user: req.user  });
+	  res.render('myEvents', { title: 'My Extracurriculars', user: req.user });
 	});
 
 	app.get('/suggest', isAuthenticated, function(req, res, next) {
-	  res.render('suggest', { title: 'Suggest an Extracurricular!', user: req.user  });
+	  res.render('suggest', { title: 'Suggest an Extracurricular!', user: req.user });
 	});
 
 	app.get('/upcoming', isAuthenticated, function(req, res, next) {
-	  res.render('upcoming', { title: 'Upcoming Extracurriculars', user: req.user  });
+	  res.render('upcoming', { title: 'Upcoming Extracurriculars', user: req.user });
 	});
 
 	//LOGIN AND LOGOUT

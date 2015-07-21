@@ -12,7 +12,8 @@ block content2
 			div.eventTitle Event Title
 			div.eventDesc Event Description
 		div.col-xs-3
-			a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+			if user.isAdmin || user.isSuperAdmin
+				a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
 			div.sponsorName Sponsor: Mrs. Derpenstein
 			div.happening Date Happening: October 15
 	section.event.mix.category2

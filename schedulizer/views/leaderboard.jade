@@ -6,13 +6,14 @@ block content2
 			div.thumbsUp 
 				a.btn.btn-default(href='#', role='button') I like it!
 			div.rank 1
-			div.upvotes 
+			div.upvotes
 				span.glyphicon.glyphicon-arrow-up 153
 		div.col-xs-4
 			div.eventTitle Event Title
 			div.eventDesc Event Description
 		div.col-xs-3
-			a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+			if user.isAdmin || user.isSuperAdmin
+				a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
 			div.sponsorName Sponsor: Mrs. Derpenstein
 			div.happening Date Happening: October 15
 	section.event.mix.category2
