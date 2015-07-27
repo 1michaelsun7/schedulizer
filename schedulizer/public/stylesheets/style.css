@@ -1,3 +1,19 @@
+/* fonts */
+@font-face {
+  font-family: allerreg;
+  src: url('/fonts/Aller/Aller_Rg.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: LeagueGothic;
+  src: url('/fonts/LeagueGothic-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'kankin';
+  src: url('/home/yang/schedulizer/schedulizer/public/stylesheets/fonts/kankin/Kankin.otf') format('opentype'),
+        url('/home/yang/schedulizer/schedulizer/public/stylesheets/fonts/kankin/Kankin.ttf') format('truetype');
+}
+
 html,
 body,
 div,
@@ -76,67 +92,40 @@ section {
 }
 /* Set up document
 -----------------------------------------------------------------------------*/
-/* fonts */
-@font-face {
-  font-family: allerreg;
-  src: url('/fonts/Aller/Aller_Rg.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: LeagueGothic;
-  src: url('/fonts/LeagueGothic-Regular.otf') format('opentype');
-}
-
 
 body {
   /*font: 62.5%/1.5 'Helvetica Neue', sans-serif;*/
   text-align: center;
   background: #a9a9a9;
-  background-image: url("backgrounds/old_moon.jpg");
-  font-family: Palatino;
-
-/*  -webkit-transition: 1s ease-in-out;
-  -moz-transition: 1s ease-in-out;
-  -o-transition: 1s ease-in-out;
-  transition: 1s ease-in-out;*/
-  
+  background-image: url("backgrounds/dark-coverbook.png");
+  font-family: 'Dosis';
+  margin-top: 0; 
 }
-
-/*body:hover{
-  transform: rotate(180deg);
-  -ms-transform: rotate(180deg); 
-  -webkit-transform: rotate(180deg); 
-  -o-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-}*/
 
 #wrapper {
   width: 100%;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
+  color: white;
+  font-family: 'Dosis';
+  float: left;
+  margin-top: 60px;
+}
+
+.left_panel {
+  float: left;
+  width: 50%;
+  /*padding-left: 10px;*/
+}
+.right_panel {
   float: right;
-  color: black;
-  font-family: Palatino;
+  width: 50%;
+  /*padding-right: 10px;*/
+}
+.title_desc{
+  font-family: 'kankin'; 
+  font-size: 18px;
 }
 
-.index {
-  margin-top: 100px;
-}
-
-#wrapper h1 {
-  padding: 20px;
-  font-size: 40pt;
-}
-
-#wrapper h2 {
-  font-size: 20pt;
-}
-
-#wrapper p {
-  font-size: 14pt;
-  padding-top: 10%;
-}
 
 .error-message {
   margin-top: 10%;
@@ -202,6 +191,12 @@ header nav ul li a:hover {
   margin: 0 auto;
   height: 100%;
   width: auto;
+}
+
+#pictureLogo {
+  height: auto;
+  width: 80%;
+  margin: 10px;
 }
 
 /* Side navbar

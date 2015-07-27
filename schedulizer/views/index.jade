@@ -1,16 +1,19 @@
 extends layout
 
-block content
+block content 
+
+  div.left_panel
+    img#pictureLogo(src='../images/picture_logo.png')
   
+  div.right_panel
+    .title_desc From freedom comes excellence
 
-  h2 From freedom comes excellence
+    #message
+      if message
+        h2.text-center.error-message #{message}
 
-  #message
-    if message
-      h2.text-center.error-message #{message}
-
-  p Not a user yet?
-  input#signupButton(type='button', value='Sign up now')
+    p Not a user yet?
+    input#signupButton(type='button', value='Sign up now')
   
 block content_navbar
   img#afterthreelogo(src='../images/afterthree_logo.png')
