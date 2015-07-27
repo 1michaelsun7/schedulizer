@@ -25,6 +25,7 @@ var eventSchema = new mongoose.Schema({
 	date: { type: Date, default: Date.now }, //date happening
 	hidden: Boolean,
 	upvotes: Number,
+	sponsored: Boolean,
 	sponsor: String,
 	attendees: [Number]
 });

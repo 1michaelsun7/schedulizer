@@ -4,6 +4,7 @@ var path     = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var qs       = require('querystring');
 
 var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -37,7 +38,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // routing
-require('./routes/routes.js')(app, passport);
+require('./routes/routes.js')(app, passport, qs);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
