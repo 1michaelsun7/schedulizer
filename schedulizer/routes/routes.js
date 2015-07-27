@@ -11,7 +11,7 @@ var isAuthenticated = function (req, res, next) {
 	res.redirect('/');
 }
 
-module.exports = function(app, passport) {
+module.exports = function(app, passport, qs) {
 
 	app.get('/', function(req, res, next) {
 	  res.render('index', { title: 'After Three', message: req.flash('message') });
@@ -22,7 +22,6 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/event', isAuthenticated, function(req, res, next) {
-	  console.log(req);
 	  res.render('event', { title: 'Event Title', user: req.user });
 	});
 
@@ -31,9 +30,9 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
+		req.logout();
+		res.redirect('/');
+	});
 
 	app.get('/main', isAuthenticated, function(req, res, next) {
 	  res.render('main', { title: 'Main Page', user: req.user });
@@ -58,7 +57,7 @@ module.exports = function(app, passport) {
 		failureFlash : true  
 	}));
 
-    app.post('/signup', passport.authenticate('signup', {
+	app.post('/signup', passport.authenticate('signup', {
 		successRedirect: '/main',
 		failureRedirect: '/',
 		failureFlash : true  
@@ -66,7 +65,33 @@ module.exports = function(app, passport) {
 
 	//suggest event
 	app.post('/suggest', function(req, res, next){
+		console.log(req.body);
+		var body = req.body;
+		var eventName = body.eventName;
+		var eventDesc = body.eventDesc;
+		var eventCat = body.eventCatHidden;
+   		// var ev = new Event();
+			// ev.name = eventName;
+			// ev.description = eventDesc;
+			// ev.owner = req.user._id; //userid of creator
+			// ev.category = eventCat;
+			// ev.hidden = false;
+			// ev.upvotes = 0;
+			// ev.sponsor = "";
+			// ev.sponsored = false;
+			// ev.attendees: [];
+			// ev.save(function(err, newEv){
+			//  if (err){
+				// console.log('Error in Saving event: '+err);  
+				// throw err;
+				// res.redirect('/main');
+				// } else {
+				// va r evID = newEv._id;
+				// res.redirect('/event?id=' + evID);
+			// }
+		// });
 		res.redirect('/event');
+		
 	});
 
 	app.get('/', function(req, res, next) {
