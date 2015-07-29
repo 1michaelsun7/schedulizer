@@ -54,7 +54,7 @@ $(document).ready(function(){
 		if (target.hasClass('btn-default')){
 			target.removeClass('btn-default');
 			target.addClass('btn-success');
-			target.html("You are the sponsor");
+			target.html("Unsponsor");
 		} else {
 			target.removeClass('btn-success');
 			target.addClass('btn-default');
@@ -67,7 +67,6 @@ $(document).ready(function(){
 		var parent = $(e.target.parentNode.parentNode.parentNode);
 		var params = { eventID: parent.find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
 		$.get('/upvote', params, function(data){
-			console.log(data);
 			parent.find(".glyphicon").html(data);
 		});
 		target.addClass("unlikeButton");
@@ -81,7 +80,6 @@ $(document).ready(function(){
 		var parent = $(e.target.parentNode.parentNode.parentNode);
 		var params = { eventID: parent.find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
 		$.get('/downvote', params, function(data){
-			console.log(data);
 			parent.find(".glyphicon").html(data);
 		})
 		target.addClass("likeButton");

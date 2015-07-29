@@ -79,7 +79,7 @@ module.exports = function(app, passport, qs) {
 
 	app.get('/myEvents', isAuthenticated, function(req, res, next) {
 	  var mytwenty = [];
-	  Event.getEventsUserAttending(function(err, events){
+	  Event.getEventsUserAttending(req.user._id, function(err, events){
 	  	if (err){
 	  		console.log(err);
 	  		res.redirect("/main");
@@ -111,6 +111,7 @@ module.exports = function(app, passport, qs) {
 	  });
 	});
 
+	//UPVOTE/DOWNVOTE
 	app.get('/upvote', isAuthenticated, function(req, res, next){
 	  var uID = req.query.userID;
 	  Event.findById(req.query.eventID, function(err, evt){
@@ -142,6 +143,36 @@ module.exports = function(app, passport, qs) {
 	  });
 	  
 	});
+
+	//SPONSOR/UNSPONSOR
+
+	// app.get('/adminsponsor', isAuthenticated, function(req, res, next){
+	// 	Event.findById(req.query.eventID, function(err, evt){
+	// 	  	if (err){
+	// 	  		console.log(err);
+	// 	  	}
+	// 	  	console.log(evt);
+	// 	  	evt.unsignupUserForEvent(uID, function(){
+	// 	  		console.log('sending');
+	// 	  		res.send(''+evt.upvotes);
+	// 	  	});
+	// 	  });
+	// });
+
+	// app.get('/adminunsponsor', isAuthenticated, function(req, res, next){
+	// 	Event.findById(req.query.eventID, function(err, evt){
+	// 	  	if (err){
+	// 	  		console.log(err);
+	// 	  	}
+	// 	  	console.log(evt);
+	// 	  	evt.unsignupUserForEvent(uID, function(){
+	// 	  		console.log('sending');
+	// 	  		res.send(''+evt.upvotes);
+	// 	  	});
+	// 	  });
+	// });
+
+	//SCHEDULE
 
 	//LOGIN AND LOGOUT
 	app.post('/login', passport.authenticate('login', {

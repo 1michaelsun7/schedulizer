@@ -1,16 +1,16 @@
 var mongoose = require('mongoose');
 
 function removeAll(arr, item) {
-	for(var i = arr.length; i--;) {
-		if(arr[i] === item) {
+	for(var i = 0; i<arr.length; i++) {
+		if(arr[i] == item) {
 			arr.splice(i, 1);
 		}
 	}
 }
 
 function addTo(arr, item) {
-	for(var i = arr.length; i--;) {
-		if(arr[i] === item) {
+	for(var i = 0; i<arr.length; i++) {
+		if(arr[i] == item) {
 			return;
 		}
 	}
@@ -18,8 +18,8 @@ function addTo(arr, item) {
 }
 
 function contains(arr, item){
-	for(var i = arr.length; i--;) {
-		if(arr[i] === item) {
+	for(var i = 0; i<arr.length; i++) {
+		if(arr[i] == item) {
 			return true;
 		}
 	}
@@ -64,6 +64,10 @@ eventSchema.statics.getEventsUserAttending = function(userId, cb){
 }
 
 eventSchema.methods.isUserAttending = function(userId){
+	console.log('calculating');
+	console.log(this.attendees);
+	console.log(userId.toString());
+	console.log(contains(this.attendees, userId));
 	return contains(this.attendees, userId);
 }
 

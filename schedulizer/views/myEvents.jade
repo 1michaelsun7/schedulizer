@@ -1,33 +1,27 @@
 extends main
 
 block content2
-	section.event.mix.category1.attended#first-event
-		div.col-xs-2
-			div.thumbsUp 
-				a.btn.btn-default(href='#', role='button') I like it!
-			div.rank 1
-			div.upvotes 
-				span.glyphicon.glyphicon-arrow-up 153
-		div.col-xs-4
-			div.eventTitle Event Title
-			div.eventDesc Event Description
-		div.col-xs-3
-			if user.isAdmin || user.isSuperAdmin
-				a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
-			div.sponsorName Sponsor: Mrs. Derpenstein
-			div.happening Date Happening: October 15
-	section.event.mix.category2
-	section.event.mix.category3.attended
-	section.event.mix.category4
-	section.event.mix.category1
-	section.event.mix.category2
-	section.event.mix.category3
-	section.event.mix.category4.attended
-	section.event.mix.category1.attended
-	section.event.mix.category2
-	section.event.mix.category3.attended
-	section.event.mix.category4
-	section.event.mix.category1
+	if mine
+		each evt, index in mine 
+			div.event.mix(class="#{evt.category} #{ evt.Date < Date.now() ? '' : 'attended' }")
+				div.eventid #{evt._id}
+				div.col-xs-2
+					div.thumbsUp
+						a.btn(role='button', class="#{ evt.isUserAttending(user._id) ? 'unlikeButton btn-success' : 'likeButton btn-default' }") I like it!
+					div.rank= index+1
+					div.upvotes
+						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
+				div.col-xs-4(onclick="window.location='/event?id=#{evt._id}'")
+					div.eventTitle #{evt.name}
+					div.eventDesc #{evt.description}
+				div.col-xs-3
+					if user.isAdmin || user.isSuperAdmin
+						if evt.sponsor == user.name
+							a#unsponsorThis.btn.btn-primary(href='#', role='button') Unsponsor
+						else
+							a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+					div.sponsorName Sponsor: #{evt.sponsor}
+					div.happening Date Happening: #{evt.date.toString("mm-dd")}
 
 block content_extra
 	a#viewPastEvents.filter.btn.btn-default(href='#', data-filter='.attended', role='button') View Past Events

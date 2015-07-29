@@ -10,7 +10,7 @@ block content2
 						if !evt.isUserAttending(user._id)
 							a.btn.btn-default.likeButton(role='button') I like it!
 						if evt.isUserAttending(user._id)
-							a.btn.btn-primary.unlikeButton(role='button') I like it!
+							a.btn.btn-success.unlikeButton(role='button') I like it!
 					div.rank= index+1
 					div.upvotes
 						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
@@ -20,7 +20,7 @@ block content2
 				div.col-xs-3
 					if user.isAdmin || user.isSuperAdmin
 						if evt.sponsor == user.name
-							a#unsponsorThis.btn.btn-primary(href='#', role='button') Sponsor this event!
+							a#unsponsorThis.btn.btn-primary(href='#', role='button') Unsponsor
 						else
 							a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
 					div.sponsorName Sponsor: #{evt.sponsor}
