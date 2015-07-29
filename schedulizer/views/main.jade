@@ -10,7 +10,10 @@ block content_navbar
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href="/main") After Three
+
+        a(href="/main") 
+          img#afterthreelogo(src='../images/afterthree_logo.png')
+       
       div#slidemenu
         ul.nav.navbar-nav.navbar-right
           if user.name
@@ -21,7 +24,11 @@ block content_navbar
             a(href="/logout") Log Out
         ul.nav.navbar-nav.navbar-right
           li
+            a(href="/main") Home
+        ul.nav.navbar-nav.navbar-right
+          li
             a(href="/suggest") Suggest        
+
 
         ul.nav.navbar-nav.left-nav
           li   
@@ -47,8 +54,7 @@ block content
   h1= title
   block content_extra
   div(style="clear:right;")
-  div#eventsWrapper
-    div.userid #{user._id}
+  section#eventsWrapper
     block content2
 
 block content_scripts
