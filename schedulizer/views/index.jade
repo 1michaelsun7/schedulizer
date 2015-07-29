@@ -15,10 +15,15 @@ block content
     p Not a user yet?
     input#signupButton(type='button', value='Sign up now')
   
-block content_index_navbar
-  img#afterthreelogo(src='../images/afterthree_logo.png')
-  li 
-    a#loginButton Log In
+block index_navbar
+  div.navbar.navbar-fixed-top#mainNavbar
+    div.container
+      ul.nav.navbar-nav
+        li
+          img#afterthreelogo(src='../images/afterthree_logo.png')
+      ul.nav.navbar-nav.navbar-right 
+        li
+          a#loginButton Log In
 
 block content_modal
   div.greyedOutOverlay
