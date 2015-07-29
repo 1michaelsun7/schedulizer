@@ -114,16 +114,19 @@ body {
 .left_panel {
   float: left;
   width: 50%;
-  /*padding-left: 10px;*/
+  padding: 20px;
 }
 .right_panel {
   float: right;
   width: 50%;
-  /*padding-right: 10px;*/
+  padding: 20px;
+  padding-right: 80px;
 }
 .title_desc{
-  font-family: 'kankin'; 
-  font-size: 18px;
+  float: left; 
+  font-size: 24px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 
@@ -194,6 +197,7 @@ header nav ul li a:hover {
 }
 
 #pictureLogo {
+  float: right;
   height: auto;
   width: 80%;
   margin: 10px;
@@ -404,3 +408,31 @@ header nav ul li a:hover {
   margin-bottom: 2%;
 }
 
+/* nav menu after login */
+/* adjust body when menu is open */
+body.slide-active {
+    overflow-x: hidden;
+}
+/*first child of #page-content so it doesn't shift around*/
+.no-margin-top {
+    margin-top: 0px!important
+}
+/*wrap the entire page content but not nav inside this div if not a fixed top, don't add any top padding */
+#wrapper {
+    position: relative;
+    padding-top: 70px;
+    left: 0;
+}
+#wrapper.slide-active {
+    padding-top: 0;
+}
+/* put toggle bars on the left :: not using button */
+#slide-nav .navbar-toggle {
+    cursor: pointer;
+    position: relative;
+    line-height: 0;
+    float: left;
+    margin: 0;
+    width: 30px;
+    height: 40px;
+}
