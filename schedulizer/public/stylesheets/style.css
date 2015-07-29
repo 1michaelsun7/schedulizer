@@ -288,6 +288,10 @@ header nav ul li a:hover {
   background: rgba(63, 63, 112, 0.5)
 }
 
+.userid {
+  display: none;
+}
+
 .event .col-xs-4 {
   text-align: left !important;
   width: 40%;
@@ -296,6 +300,10 @@ header nav ul li a:hover {
 .event .col-xs-3 {
   text-align: left !important;
   width: 40%;
+}
+
+.eventid {
+  display: none;
 }
 
 .eventTitle {
@@ -318,9 +326,6 @@ header nav ul li a:hover {
 
 .sponsorName {
   font-size: 14pt;
-}
-
-.studentHidden{
 }
 
 .happening {

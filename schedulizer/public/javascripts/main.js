@@ -49,25 +49,45 @@ $(document).ready(function(){
 		});
 	}
 
-	$('.event').on("click", function(e){
-		var target = $(e.target);
-		if (target.is('.btn')){
-			if (target.hasClass('btn-default')){
-				target.removeClass('btn-default');
-				target.addClass('btn-success');
-				if (target.attr('id') == "sponsorThis"){
-					target.html("You are the sponsor");
-				}
-			} else {
-				target.removeClass('btn-success');
-				target.addClass('btn-default');
-				if (target.attr('id') == "sponsorThis"){
-					target.html("Sponsor this event!");
-				}
-			}
+	$('#sponsorThis').on("click", function(e){
+		var target = $('#sponsorThis');
+		if (target.hasClass('btn-default')){
+			target.removeClass('btn-default');
+			target.addClass('btn-success');
+			target.html("You are the sponsor");
 		} else {
-			document.location.href = '/event';
+			target.removeClass('btn-success');
+			target.addClass('btn-default');
+			target.html("Sponsor this event!");
 		}
+	});
+
+	$('.event').on('click', '.likeButton', function(e){
+		var target = $(e.target);
+		var parent = $(e.target.parentNode.parentNode.parentNode);
+		var params = { eventID: parent.find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
+		$.get('/upvote', params, function(data){
+			console.log(data);
+			parent.find(".glyphicon").html(data);
+		});
+		target.addClass("unlikeButton");
+		target.addClass("btn-success");
+		target.removeClass("btn-default");
+		target.removeClass("likeButton");
+	});
+
+	$('.event').on('click', '.unlikeButton', function(e){
+		var target = $(e.target);
+		var parent = $(e.target.parentNode.parentNode.parentNode);
+		var params = { eventID: parent.find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
+		$.get('/downvote', params, function(data){
+			console.log(data);
+			parent.find(".glyphicon").html(data);
+		})
+		target.addClass("likeButton");
+		target.addClass("btn-default");
+		target.removeClass("btn-success");
+		target.removeClass("unlikeButton");
 	});
 
 	$('#viewPastEvents').on("click", function(){
