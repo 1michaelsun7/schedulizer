@@ -26,8 +26,8 @@ block content_navbar
           li
             a(href="/suggest") Suggest        
 
-        ul.nav.navbar-nav
-          li.active   
+        ul.nav.navbar-nav.left-nav
+          li   
             a(href="/leaderboard") Leaderboard
           li
             a(href="/upcoming") Upcoming Events
@@ -58,7 +58,16 @@ block content_scripts
   script(type='text/javascript').
     $(function(){
       $('#eventsWrapper').mixItUp();
+
+      //change active li on click
+      $(".left-nav li").click(function() {
+        console.log("clicked!!!");
+        $(".left-nav li").removeClass("active");
+        $(this).addClass("active");
+      });
     });
+
+    
 
     $(document).ready(function () {
       //stick in the fixed 100% height behind the navbar but don't wrap it
