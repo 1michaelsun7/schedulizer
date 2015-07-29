@@ -2,7 +2,10 @@ extends main
 
 block content2
 	div.singleEvent
-
+		#evt
+			if evt
+				if evt.description
+					p#eventDescript #{evt.description}
 
 block content_extra
 	if user.isAdmin || user.isSuperAdmin

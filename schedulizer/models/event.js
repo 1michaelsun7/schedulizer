@@ -17,17 +17,26 @@ function addTo(arr, item) {
 	arr.push(item);
 }
 
+function contains(arr, item){
+	for(var i = arr.length; i--;) {
+		if(arr[i] === item) {
+			return true;
+		}
+	}
+	return false;
+}
+
 var eventSchema = new mongoose.Schema({
 	name: String,
 	description: String,
-	owner: Number, //userid of creator
+	owner: String, //userid of creator
 	category: String,
 	date: { type: Date, default: Date.now }, //date happening
 	hidden: Boolean,
 	upvotes: Number,
 	sponsored: Boolean,
 	sponsor: String,
-	attendees: [Number]
+	attendees: [String]
 });
 
 eventSchema.statics.findByName = function (name, cb) {
@@ -35,31 +44,41 @@ eventSchema.statics.findByName = function (name, cb) {
 }
 
 eventSchema.statics.findByCategory = function (cat, cb) {
-	return this.find({ category: new RegExp(cat, 'i') }, cb).sort({upvotes: 'desc'}).limit(20);
+	return this.find({ category: new RegExp(cat, 'i') }).sort({upvotes: 'desc'}).limit(20).exec(cb);
 }
 
 eventSchema.statics.sortByUpvotes = function(cb) {
-	return this.find({ hidden: false }).sort({upvotes: 'desc'}).limit(20);
+	return this.find({ hidden: false }).sort({upvotes: 'desc'}).limit(20).exec(cb);
 }
 
 eventSchema.statics.sortByUpcoming = function(cb) {
-	return this.find({ hidden: false }).sort({date: 'asc'}).limit(20);
+	return this.find({ hidden: false }).sort({date: 'asc'}).limit(20).exec(cb);
 }
 
 eventSchema.statics.getPastEvents = function(cb) {
-	return this.find({ hidden: true }).sort({date: 'desc'});
+	return this.find({ hidden: true }).sort({date: 'desc'}).exec(cb);
 }
 
 eventSchema.statics.getEventsUserAttending = function(userId, cb){
-	return this.find({ hidden: false, attendees: { "$in" : [userId]} }).sort({upvotes: "desc"});
+	return this.find({ hidden: false, attendees: userId }).sort({upvotes: "desc"}).limit(20).exec(cb);
+}
+
+eventSchema.methods.isUserAttending = function(userId){
+	return contains(this.attendees, userId);
 }
 
 eventSchema.methods.signupUserForEvent = function(userId, cb){
-	return this.model('Event').update({_id: this._id}, {attendees: addTo(this.attendees, userId), upvotes: this.upvotes + 1}, { multi: false }, cb);
+	console.log('upvoting');
+	addTo(this.attendees, userId);
+	this.upvotes++;
+	this.save(cb);
 }
 
 eventSchema.methods.unsignupUserForEvent = function(userId, cb){
-	return this.model('Event').update({_id: this._id}, {attendees: removeAll(this.attendees, userId), upvotes: this.upvotes - 1}, { multi: false }, cb);
+	console.log("downvoting");
+	removeAll(this.attendees, userId);
+	this.upvotes = this.attendees.length;
+	this.save(cb);
 }
 
 module.exports = mongoose.model('Event', eventSchema);

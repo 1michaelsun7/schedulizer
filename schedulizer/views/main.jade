@@ -51,7 +51,8 @@ block content
   h1= title
   block content_extra
   div(style="clear:right;")
-  section#eventsWrapper
+  div#eventsWrapper
+    div.userid #{user._id}
     block content2
 
 block content_scripts

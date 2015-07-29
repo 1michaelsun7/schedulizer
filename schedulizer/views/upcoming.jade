@@ -1,30 +1,27 @@
 extends main
 
 block content2
-	section.event.mix.category1
-		div.col-xs-2
-			div.thumbsUp 
-				a.btn.btn-default(href='#', role='button') I like it!
-			div.rank 1
-			div.upvotes 
-				span.glyphicon.glyphicon-arrow-up 153
-		div.col-xs-4
-			div.eventTitle Event Title
-			div.eventDesc Event Description
-		div.col-xs-3
-			if user.isAdmin || user.isSuperAdmin
-				a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
-			div.sponsorName Sponsor: Mrs. Derpenstein
-			div.happening Date Happening: October 15
-	section.event.mix.category2
-	section.event.mix.category3
-	section.event.mix.category4
-	section.event.mix.category1
-	section.event.mix.category2
-	section.event.mix.category3
-	section.event.mix.category4
-	section.event.mix.category1
-	section.event.mix.category2
-	section.event.mix.category3
-	section.event.mix.category4
-	section.event.mix.category1
+	if upcoming
+		each evt, index in upcoming 
+			div.event.mix(class="#{evt.category}")
+				div.eventid #{evt._id}
+				div.col-xs-2
+					div.thumbsUp 
+						if !evt.isUserAttending(user._id)
+							a.btn.btn-default.likeButton(role='button') I like it!
+						if evt.isUserAttending(user._id)
+							a.btn.btn-primary.unlikeButton(role='button') I like it!
+					div.rank= index+1
+					div.upvotes
+						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
+				div.col-xs-4(onclick="window.location='/event?id=#{evt._id}'")
+					div.eventTitle #{evt.name}
+					div.eventDesc #{evt.description}
+				div.col-xs-3
+					if user.isAdmin || user.isSuperAdmin
+						if evt.sponsor == user.name
+							a#unsponsorThis.btn.btn-primary(href='#', role='button') Sponsor this event!
+						else
+							a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+					div.sponsorName Sponsor: #{evt.sponsor}
+					div.happening Date Happening: #{evt.date.toString("mm-dd")}
