@@ -277,7 +277,7 @@ header nav ul li a:hover {
   border-bottom: 1px solid gray;
   padding: 20px;
   height: 150px;
-  cursor: pointer;
+  
   background: rgba(63, 63, 112, 0.5)
 }
 
@@ -298,6 +298,7 @@ header nav ul li a:hover {
 .event .col-xs-4 {
   text-align: left !important;
   width: 40%;
+  cursor: pointer;
 }
 
 .event .col-xs-3 {

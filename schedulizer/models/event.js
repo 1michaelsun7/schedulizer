@@ -64,10 +64,6 @@ eventSchema.statics.getEventsUserAttending = function(userId, cb){
 }
 
 eventSchema.methods.isUserAttending = function(userId){
-	console.log('calculating');
-	console.log(this.attendees);
-	console.log(userId.toString());
-	console.log(contains(this.attendees, userId));
 	return contains(this.attendees, userId);
 }
 
@@ -82,6 +78,26 @@ eventSchema.methods.unsignupUserForEvent = function(userId, cb){
 	console.log("downvoting");
 	removeAll(this.attendees, userId);
 	this.upvotes = this.attendees.length;
+	this.save(cb);
+}
+
+eventSchema.methods.sponsoring = function(username, cb){
+	console.log('sponsoring');
+	this.sponsor = username;
+	this.sponsored = true;
+	this.save(cb);
+}
+
+eventSchema.methods.unsponsoring = function(cb){
+	console.log('unsponsoring');
+	this.sponsor = "";
+	this.sponsored = false;
+	this.save(cb);
+}
+
+eventSchema.methods.schedulize = function(dt, cb){
+	console.log('schedulizing');
+	this.date = dt;
 	this.save(cb);
 }
 

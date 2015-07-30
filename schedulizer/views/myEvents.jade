@@ -17,11 +17,16 @@ block content2
 				div.col-xs-3
 					if user.isAdmin || user.isSuperAdmin
 						if evt.sponsor == user.name
-							a#unsponsorThis.btn.btn-primary(href='#', role='button') Unsponsor
+							a.unsponsorThis.btn.btn-success(href='#', role='button') Unsponsor
 						else
-							a#sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
+							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
 					div.sponsorName Sponsor: #{evt.sponsor}
-					div.happening Date Happening: #{evt.date.toString("mm-dd")}
+					div.happening
+						| Date Happening:
+						if !evt.sponsored || evt.sponsor !== user.name
+							p #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
+						else 
+							input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")
 
 block content_extra
 	a#viewPastEvents.filter.btn.btn-default(href='#', data-filter='.attended', role='button') View Past Events
