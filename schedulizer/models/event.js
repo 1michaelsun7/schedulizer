@@ -101,4 +101,14 @@ eventSchema.methods.schedulize = function(dt, cb){
 	this.save(cb);
 }
 
+eventSchema.methods.getListOfEmails = function(){
+	var emails = [];
+	for (attend in this.attendees){
+		User.findOne({_id: attend}, function(u){
+			emails.push(u.email);
+		});
+	}
+	return emails;
+}
+
 module.exports = mongoose.model('Event', eventSchema);

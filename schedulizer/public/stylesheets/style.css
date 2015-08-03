@@ -247,6 +247,17 @@ header nav ul li a:hover {
   margin: 0;
 }
 
+/* admin center */
+.userBlock{
+  border: 1px solid black;
+  width: 400px;
+  height: 250px;
+  padding: 10px;
+  margin: 10px;
+  display: inline-table;
+  text-align: left;
+}
+
 /*events divs
 ---------------------------------------------------------------------------------------------------*/
 #wrapper h1 {
