@@ -1,5 +1,6 @@
 var Event = require("../models/event.js");
 var Content = require("../models/content.js");
+var User = require('../models/user');
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler 
@@ -28,7 +29,17 @@ module.exports = function(app, passport, qs) {
 
 	app.get('/admincenter', isAuthenticated, function(req, res, next) {
 	  if (req.user.isSuperAdmin){
-	  	res.render('admincenter', { title: 'After Three Admin Center', user: req.user });	
+	  	var allusers = [];
+	  	User.find(function(err, us){
+	  		if (err){
+	  			console.log(err);
+	  			res.redirect("/main");
+	  		}
+	  		console.log(us);
+	  		res.render('admincenter', { title: 'After Three Admin Center', user: req.user, allusers: us});
+	  	});
+	  	
+	  		
 	  } else {
 	  	res.render('/');
 	  }
@@ -118,10 +129,8 @@ module.exports = function(app, passport, qs) {
 	  	if (err){
 	  		console.log(err);
 	  	}
-	  	console.log(evt);
 	  	if (!contains(evt.attendees, uID)){
 	  		evt.signupUserForEvent(uID, function(){
-	  			console.log('sending');
 	  			res.send(''+evt.upvotes);
 	  		});
 	  	}
@@ -135,9 +144,7 @@ module.exports = function(app, passport, qs) {
 	  	if (err){
 	  		console.log(err);
 	  	}
-	  	console.log(evt);
 	  	evt.unsignupUserForEvent(uID, function(){
-	  		console.log('sending');
 	  		res.send(''+evt.upvotes);
 	  	});
 	  });
@@ -146,33 +153,79 @@ module.exports = function(app, passport, qs) {
 
 	//SPONSOR/UNSPONSOR
 
-	// app.get('/adminsponsor', isAuthenticated, function(req, res, next){
-	// 	Event.findById(req.query.eventID, function(err, evt){
-	// 	  	if (err){
-	// 	  		console.log(err);
-	// 	  	}
-	// 	  	console.log(evt);
-	// 	  	evt.unsignupUserForEvent(uID, function(){
-	// 	  		console.log('sending');
-	// 	  		res.send(''+evt.upvotes);
-	// 	  	});
-	// 	  });
-	// });
+	app.get('/adminsponsor', isAuthenticated, function(req, res, next){
+		Event.findById(req.query.eventID, function(err, evt){
+		  	if (err){
+		  		console.log(err);
+		  	}
+		  	console.log(evt);
+			if (!evt.sponsored){
+				evt.sponsoring(req.query.username, function(){
+			  		console.log('sending');
+			  		res.send(req.query.username);
+			  	});
+			}
+		  	
+		});
+	});
 
-	// app.get('/adminunsponsor', isAuthenticated, function(req, res, next){
-	// 	Event.findById(req.query.eventID, function(err, evt){
-	// 	  	if (err){
-	// 	  		console.log(err);
-	// 	  	}
-	// 	  	console.log(evt);
-	// 	  	evt.unsignupUserForEvent(uID, function(){
-	// 	  		console.log('sending');
-	// 	  		res.send(''+evt.upvotes);
-	// 	  	});
-	// 	  });
-	// });
+	app.get('/adminunsponsor', isAuthenticated, function(req, res, next){
+		Event.findById(req.query.eventID, function(err, evt){
+		  	if (err){
+		  		console.log(err);
+		  	}
+		  	console.log(evt);
+			if (evt.sponsor == req.query.username){
+				evt.unsponsoring(function(){
+			  		console.log('sending');
+			  		res.send(req.query.username);
+			  	});
+			}
+		  	
+		  });
+	});
 
 	//SCHEDULE
+
+	app.get('/schedulize', isAuthenticated, function(req, res, next){
+		Event.findById(req.query.eventID, function(err, evt){
+		  	if (err){
+		  		console.log(err);
+		  	}
+		  	console.log(evt);
+			evt.schedulize(req.query.eventDate, function(){
+				console.log('sending');
+				res.send(req.query.eventDate);
+			});
+		  	
+		  });
+	});
+
+	//ADMINIFY
+
+	app.get('/adminify', isAuthenticated, function(req, res, next){
+		User.findById(req.query.userID, function(err, u){
+			if (err){
+				console.log(err);
+			}
+			
+			u.isAdmin = true;
+			u.save();
+			console.log(u);
+		})
+	});
+
+	app.get('/unadminify', isAuthenticated, function(req, res, next){
+		User.findById(req.query.userID, function(err, u){
+			if (err){
+				console.log(err);
+			}
+			
+			u.isAdmin = false;
+			u.save();
+			console.log(u);
+		})
+	});
 
 	//LOGIN AND LOGOUT
 	app.post('/login', passport.authenticate('login', {

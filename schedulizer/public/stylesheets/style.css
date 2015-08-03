@@ -247,6 +247,17 @@ header nav ul li a:hover {
   margin: 0;
 }
 
+/* admin center */
+.userBlock{
+  border: 1px solid black;
+  width: 400px;
+  height: 250px;
+  padding: 10px;
+  margin: 10px;
+  display: inline-table;
+  text-align: left;
+}
+
 /*events divs
 ---------------------------------------------------------------------------------------------------*/
 #wrapper h1 {
@@ -277,7 +288,7 @@ header nav ul li a:hover {
   border-bottom: 1px solid gray;
   padding: 20px;
   height: 150px;
-  cursor: pointer;
+  
   background: rgba(63, 63, 112, 0.5)
 }
 
@@ -298,6 +309,7 @@ header nav ul li a:hover {
 .event .col-xs-4 {
   text-align: left !important;
   width: 40%;
+  cursor: pointer;
 }
 
 .event .col-xs-3 {

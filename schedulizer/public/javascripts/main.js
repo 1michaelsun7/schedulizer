@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	$("#categories").on("mouseenter", function(){
 		$(".inner-tab-container").show();
 	});
@@ -49,17 +50,32 @@ $(document).ready(function(){
 		});
 	}
 
-	$('#sponsorThis').on("click", function(e){
-		var target = $('#sponsorThis');
-		if (target.hasClass('btn-default')){
-			target.removeClass('btn-default');
-			target.addClass('btn-success');
-			target.html("Unsponsor");
-		} else {
-			target.removeClass('btn-success');
-			target.addClass('btn-default');
-			target.html("Sponsor this event!");
-		}
+	$('.event').on("click", '.sponsorThis', function(e){
+		var target = $(e.target);
+		var parent = $(e.target.parentNode.parentNode);
+		var params = { eventID: parent.find(".eventid").html(), username: $("#eventsWrapper").find(".username").html() };
+		$.get('/adminsponsor', params, function(data){
+			parent.find(".sponsorName").html("Sponsor: " + data);
+		});
+		target.html("Unsponsor");
+		target.addClass("unsponsorThis");
+		target.addClass("btn-success");
+		target.removeClass("btn-default");
+		target.removeClass("sponsorThis");
+	});
+
+	$('.event').on("click", '.unsponsorThis', function(e){
+		var target = $(e.target);
+		var parent = $(e.target.parentNode.parentNode);
+		var params = { eventID: parent.find(".eventid").html(), username: $("#eventsWrapper").find(".username").html() };
+		$.get('/adminunsponsor', params, function(data){
+			parent.find(".sponsorName").html("Sponsor: ");
+		});
+		target.html("Sponsor this event!");
+		target.addClass("sponsorThis");
+		target.addClass("btn-default");
+		target.removeClass("btn-success");
+		target.removeClass("unsponsorThis");
 	});
 
 	$('.event').on('click', '.likeButton', function(e){
@@ -81,11 +97,51 @@ $(document).ready(function(){
 		var params = { eventID: parent.find(".eventid").html(), userID: $("#eventsWrapper").find(".userid").html() };
 		$.get('/downvote', params, function(data){
 			parent.find(".glyphicon").html(data);
-		})
+		});
 		target.addClass("likeButton");
 		target.addClass("btn-default");
 		target.removeClass("btn-success");
 		target.removeClass("unlikeButton");
+	});
+
+	$('.scheduler').on('keypress', function(e){
+		var target = $(this);
+		var parent = $(this.parentNode.parentNode.parentNode);
+		if (e.keyCode === 13 ){
+			var curDate = $(this).val();
+			console.log(curDate);
+			var splitDate = curDate.split('/');
+			console.log(splitDate);
+			if (splitDate.length !== 3){
+				$(this).val("Invalid date: must be of form mm/dd/yyyy");
+			} else {
+				var d = new Date();
+				if (splitDate[0] > 11 || splitDate[0] < 0 || splitDate[1] < 0 || splitDate[1] > 30 || splitDate[2] < d.getFullYear()){
+					$(this).val("Invalid date: date does not exist");
+				} else {
+					var datemonth = splitDate[0];
+					var dateday = (parseInt(splitDate[1]) + 1).toString();
+					if (splitDate[0] < 10){
+						datemonth = "0" + datemonth;
+					}
+					if (splitDate[1] < 10){
+						dateday = "0" + dateday;
+					}
+					var datestring = splitDate[2] + '-' + datemonth + '-' + dateday;
+					console.log(datestring);
+					var newDate = new Date(datestring);
+					console.log(newDate);
+					if (newDate < d){
+						$(this).val("Invalid date: date is in past");
+					} else {
+						var params = {eventID: parent.find(".eventid").html(), eventDate: newDate};
+						$.get('/schedulize', params, function(data){
+							console.log(data);
+						});
+					}
+				}
+			}
+		}
 	});
 
 	$('#viewPastEvents').on("click", function(){
