@@ -13,8 +13,9 @@ block content_navbar
 
         a(href="/main") 
           img#afterthreelogo(src='../images/afterthree_logo.png')
-       
-      div#slidemenu
+
+
+      div#slidemenu           
         ul.nav.navbar-nav.navbar-right
           if user.name
             li
@@ -27,8 +28,7 @@ block content_navbar
             a(href="/main") Home
         ul.nav.navbar-nav.navbar-right
           li
-            a(href="/suggest") Suggest        
-
+            a(href="/suggest") Suggest   
 
         ul.nav.navbar-nav.left-nav
           li   
@@ -65,7 +65,6 @@ block content_scripts
 
       //change active li on click
       $(".left-nav li").click(function() {
-        console.log("clicked!!!");
         $(".left-nav li").removeClass("active");
         $(this).addClass("active");
       });
@@ -82,6 +81,7 @@ block content_scripts
       var slideneg = '-80%';
 
       $("#slide-nav").on("click", toggler, function (e) {
+        console.log("toggggling");
         var selected = $(this).hasClass('slide-active');
 
         $('#slidemenu').stop().animate({
