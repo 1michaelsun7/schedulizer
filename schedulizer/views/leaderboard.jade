@@ -3,15 +3,16 @@ extends main
 block content2
 	if leaderboard
 		each evt, index in leaderboard 
-			div.event.mix(class="#{evt.category}")
+			div.event.mix(class="#{evt.category}")(id=index===0 ? 'first-event' : '')
 				div.eventid #{evt._id}
+				div.rank= index+1
 				div.col-xs-2
 					div.thumbsUp 
 						if !evt.isUserAttending(user._id)
-							a.btn.btn-default.likeButton(role='button') I like it!
+							a.btn.btn-default.likeButton(role='button') Like!
 						if evt.isUserAttending(user._id)
-							a.btn.btn-success.unlikeButton(role='button') I like it!
-					div.rank= index+1
+							a.btn.btn-success.unlikeButton(role='button') Like!
+					
 					div.upvotes
 						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
 				div.col-xs-4(onclick="window.location='/event?id=#{evt._id}'")

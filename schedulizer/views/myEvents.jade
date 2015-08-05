@@ -3,12 +3,13 @@ extends main
 block content2
 	if mine
 		each evt, index in mine 
-			div.event.mix(class="#{evt.category} #{ evt.Date < Date.now() ? '' : 'attended' }")
+			div.event.mix(class="#{evt.category} #{ evt.Date < Date.now() ? '' : 'attended' }")(id=index===0 ? 'first-event' : '')
 				div.eventid #{evt._id}
+				div.rank= index+1
 				div.col-xs-2
 					div.thumbsUp
 						a.btn(role='button', class="#{ evt.isUserAttending(user._id) ? 'unlikeButton btn-success' : 'likeButton btn-default' }") I like it!
-					div.rank= index+1
+					
 					div.upvotes
 						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
 				div.col-xs-4(onclick="window.location='/event?id=#{evt._id}'")
