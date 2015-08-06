@@ -22,7 +22,7 @@ block content2
 					if user.isAdmin || user.isSuperAdmin
 						if evt.sponsor == user.name
 							a.unsponsorThis.btn.btn-success(href='#', role='button') Unsponsor
-						else
+						else if evt.sponsor == ""
 							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
 					div.sponsorName Sponsor: #{evt.sponsor}
 					div.happening
