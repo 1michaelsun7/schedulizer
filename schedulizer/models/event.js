@@ -56,7 +56,7 @@ eventSchema.statics.sortByUpcoming = function(cb) {
 }
 
 eventSchema.statics.getPastEvents = function(cb) {
-	return this.find({ hidden: true }).sort({date: 'desc'}).exec(cb);
+	return this.find().sort({date: 'desc'}).exec(cb);
 }
 
 eventSchema.statics.getEventsUserAttending = function(userId, cb){

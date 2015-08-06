@@ -48,19 +48,31 @@ module.exports = function(app, passport, qs) {
 
 	app.get('/event', isAuthenticated, function(req, res, next) {
 	  var passedEventId = req.query.id;
-	  Event.findOne({_id: passedEventId}, function(err, evt){
+	  var eventContent = [];
+	  Content.getAllContentForEvent(passedEventId, function(err, c){
 	  	if (err){
-	  		console.log("Event does not exist");
-	  		res.redirect("/main");
-	  	}
-	  	if (evt.hidden){
-	  		console.log("Event does not exist");
-	  		res.redirect("/main");
+	  		console.log("Error Loading Content");
 	  	} else {
-  			var thisEvent = evt;
-  			res.render('event', { title: thisEvent.name, user: req.user, evt: thisEvent });
+	  		c.forEach(function(ct){
+	  			eventContent.push(ct);
+	  		});
+	  		console.log(eventContent);
+	  		Event.findOne({_id: passedEventId}, function(err, evt){
+				if (err){
+					console.log("Event does not exist");
+					res.redirect("/main");
+				}
+				if (evt.hidden){
+					console.log("Event does not exist");
+					res.redirect("/main");
+				} else {
+					var thisEvent = evt;
+					res.render('event', { title: thisEvent.name, user: req.user, evt: thisEvent, cont: eventContent });
+				}
+			});
 	  	}
 	  });
+	  
 	});
 
 	app.get('/leaderboard', isAuthenticated, function(req, res, next) {
@@ -227,6 +239,26 @@ module.exports = function(app, passport, qs) {
 		})
 	});
 
+	//CONTENTIFY
+	app.post('/addcontent', isAuthenticated, function(req, res, next){
+		console.log(req.body);
+		var body = req.body;
+		var cont = new Content();
+		cont.name = body.conturl;
+		cont.creator = body.userID;
+		cont.url = body.conturl;
+		cont.eventId = body.eventID;
+		cont.save(function(err, newC){
+			if (err){
+				console.log('Error in save content: ' + err);
+				throw err;
+			} else {
+				res.redirect('/event?id=' + body.eventID);
+			}
+		});
+
+	});
+
 	//LOGIN AND LOGOUT
 	app.post('/login', passport.authenticate('login', {
 		successRedirect: '/main',
@@ -248,16 +280,16 @@ module.exports = function(app, passport, qs) {
 		var eventDesc = body.eventDesc;
 		var eventCat = body.eventCatHidden;
    		var ev = new Event();
-			ev.name = eventName;
-			ev.description = eventDesc;
-			ev.owner = req.user._id; //userid of creator
-			ev.category = eventCat;
-			ev.hidden = false;
-			ev.upvotes = 0;
-			ev.sponsor = "";
-			ev.sponsored = false;
-			ev.attendees = [];
-			ev.save(function(err, newEv){
+		ev.name = eventName;
+		ev.description = eventDesc;
+		ev.owner = req.user._id; //userid of creator
+		ev.category = eventCat;
+		ev.hidden = false;
+		ev.upvotes = 0;
+		ev.sponsor = "";
+		ev.sponsored = false;
+		ev.attendees = [];
+		ev.save(function(err, newEv){
 			if (err){
 				console.log('Error in Saving event: '+err);  
 				throw err;

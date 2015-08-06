@@ -2,15 +2,14 @@ var mongoose = require('mongoose');
 
 var contentSchema = new mongoose.Schema({
 	name: String,
-	creator: Number, //userid of creator
-	url: String,
+	creator: String, //userid of creator
+	url: String, // url to content
 	date: { type: Date, default: Date.now }, //date added
-	hidden: Boolean,
-	eventId: Number
+	eventId: String
 });
 
 contentSchema.statics.getAllContentForEvent = function (eventId, cb) {
-    return this.find({ eventId: eventId, hidden: false }, cb);
+    return this.find({ eventId: eventId }).exec(cb);
 }
 
 contentSchema.methods.removeContentFromEvent = function(cb){

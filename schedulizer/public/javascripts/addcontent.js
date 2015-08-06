@@ -14,6 +14,7 @@ $(document).ready(function(){
   $("#add-website-btn").click(function (e) {
     var url = $("#website-url").val().trim();
     if (urlIsValid(url)){
+      url = $("#url-beginning").text() + url;
       $("#website-url").val("");
       $(".singleEvent").append(createWebsiteObject(url));
 
@@ -22,6 +23,9 @@ $(document).ready(function(){
       });
       $('.greyedOutOverlay').hide();
       $("#add-website-modal").hide();
+
+      var params = {conturl: url, userID: $("#eventsWrapper").find(".userid").html(), eventID: $(".singleEvent").find(".eventid").html()};
+      $.post('/addcontent', params, function(data){});
              
     } else{
       $("#add-website-error-msg").text("Please enter a valid URL.");
@@ -53,7 +57,7 @@ $(document).ready(function(){
 
 // Source for thumbnails: http://pagepeeker.com/website-thumbnails-api/
 var createWebsiteObject = function(url){
-  var fullUrl = $("#url-beginning").text() + url;
+  var fullUrl = url;
   var getImageUrl = "http://free.pagepeeker.com/v2/thumbs.php?size=m&url=" + fullUrl;
 
   var link = $('<a>', {href: fullUrl,
