@@ -175,10 +175,12 @@ header nav ul li a:hover {
 #afterthreelogo {
   float: left;
   margin: 0 auto;
-  height: 40px;
+  height: 30px;
   width: auto;
   padding: 0px;
   margin-top:10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
 }
 
 #pictureLogo {
@@ -332,7 +334,13 @@ header nav ul li a:hover {
 .rank {
   font-size: 16pt;
   font-weight: 500;
-  margin: 10px 0;
+  /*margin: 10px 0;*/
+  position: absolute;
+}
+
+.thumbsUp {
+  margin-top: 25px;
+  margin-bottom: 10px;
 }
 
 .upvotes {
