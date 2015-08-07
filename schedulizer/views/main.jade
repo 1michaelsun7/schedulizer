@@ -18,11 +18,11 @@ block content_navbar
       div#slidemenu           
         ul.nav.navbar-nav.navbar-right
           if user.name
-            li
-              a#helloMessage Hello, #{user.name}!
-        ul.nav.navbar-nav.navbar-right 
-          li
-            a(href="/logout") Log Out
+            li.dropdown
+              a.dropdown-toggle(href="#", data-toggle="dropdown")#helloMessage Hello, #{user.name}!
+              ul.dropdown-menu
+                li
+                  a(href="/logout") Log Out
 
         ul.nav.navbar-nav.navbar-right
           li
