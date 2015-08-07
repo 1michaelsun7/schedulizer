@@ -23,8 +23,11 @@ block content2
 							a.sponsorThis.btn.btn-default(href='#', role='button') Sponsor this event!
 					div.sponsorName Sponsor: #{evt.sponsor}
 					div.happening
-						| Date Happening:
-						if !evt.sponsored || evt.sponsor !== user.name
+						if !evt.sponsored
+							p
+						else if evt.sponsor !== user.name
+							| Date Happening:
 							p #{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}
 						else 
+							| Date Happening:
 							input.scheduler(type='text', value='#{evt.date.getMonth()+1}/#{evt.date.getDate()}/#{evt.date.getFullYear()}', placeholder="mm/dd/yyyy")

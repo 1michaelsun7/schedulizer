@@ -26,12 +26,16 @@ function contains(arr, item){
 	return false;
 }
 
+var defaultDate = new Date();
+defaultDate.setDate(defaultDate.getDate() + 7);
+
+
 var eventSchema = new mongoose.Schema({
 	name: String,
 	description: String,
 	owner: String, //userid of creator
 	category: String,
-	date: { type: Date, default: Date.now }, //date happening
+	date: { type: Date, default: defaultDate }, //date happening
 	hidden: Boolean,
 	upvotes: Number,
 	sponsored: Boolean,
@@ -48,11 +52,11 @@ eventSchema.statics.findByCategory = function (cat, cb) {
 }
 
 eventSchema.statics.sortByUpvotes = function(cb) {
-	return this.find({ hidden: false }).sort({upvotes: 'desc'}).limit(20).exec(cb);
+	return this.find({ hidden: false, date: { $gt: Date.now() } }).sort({upvotes: 'desc'}).limit(20).exec(cb);
 }
 
 eventSchema.statics.sortByUpcoming = function(cb) {
-	return this.find({ hidden: false }).sort({date: 'asc'}).limit(20).exec(cb);
+	return this.find({ hidden: false, sponsored: true, date: { $gt: Date.now() } }).sort({date: 'asc'}).limit(20).exec(cb);
 }
 
 eventSchema.statics.getPastEvents = function(cb) {
