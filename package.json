@@ -1,9 +1,9 @@
 {
   "name": "schedulizer",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
+  "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "~1.13.1",
@@ -17,5 +17,18 @@
     "passport-local" : "~0.1.6", 
     "serve-favicon": "~2.3.0",
     "stylus": "0.42.3"
-  }
+  },
+  "engines": {
+    "node": "0.12.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1michaelsun7/schedulizer"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
 }
