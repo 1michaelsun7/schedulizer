@@ -312,6 +312,7 @@ header nav ul li a:hover {
   text-align: left !important;
   width: 40%;
   cursor: pointer;
+
 }
 
 .event .col-xs-3 {
@@ -329,6 +330,10 @@ header nav ul li a:hover {
 
 .eventDesc {
   font-size: 16pt;
+  height: 90px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .rank {

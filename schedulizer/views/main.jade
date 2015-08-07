@@ -15,8 +15,8 @@ block content_navbar
           img#afterthreelogo(src='../images/afterthree_logo_white.png')
 
 
-      div#slidemenu           
-        ul.nav.navbar-nav.navbar-right
+      div#slidemenu
+        ul.nav.navbar-nav.navbar-right.hidden-sm.hidden-xs
           if user.name
             li.dropdown
               a.dropdown-toggle(href="#", data-toggle="dropdown")#helloMessage Hello, #{user.name}!
@@ -24,11 +24,11 @@ block content_navbar
                 li
                   a(href="/logout") Log Out
 
-        ul.nav.navbar-nav.navbar-right
+        ul.nav.navbar-nav.navbar-right.hidden-sm.hidden-xs
           li
             a(href="/suggest") Suggest   
 
-        ul.nav.navbar-nav.left-nav
+        ul.nav.navbar-nav.left-nav.hidden-sm.hidden-xs
           li   
             a(href="/leaderboard") Leaderboard
           li
