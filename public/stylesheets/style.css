@@ -185,6 +185,7 @@ header nav ul li a:hover {
   margin-top:10px;
   margin-bottom: 10px;
   margin-right: 10px;
+  margin-left: 20px;
 }
 
 #pictureLogo {
@@ -283,29 +284,28 @@ header nav ul li a:hover {
   display: none;
 }
 
-#first-event{
-  border-top: 1px solid gray;
-}
-
 .event{
   width: 75%;
-  min-width: 750px;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  border-bottom: 1px solid gray;
+  max-width: 750px;
+  border: 2px solid gray;
   padding: 20px;
   height: 150px;
   
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
   background: rgba(63, 63, 112, 0.5)
 }
 
 .singleEvent{
   margin: 10px auto;
   width: 75%;
-  min-width: 750px;
+  max-width: 750px;
   border: 1px solid gray;
   padding: 20px;
-  height: 400px;
+  /*min-height: 200px;*/
+  height: auto;
+  overflow: auto;
   background: rgba(63, 63, 112, 0.5)
 }
 
@@ -463,8 +463,10 @@ header nav ul li a:hover {
 }
 
 .faq_title {
+  font-family: 'Shadows Into Light';
   font-size: 24px;
   font-weight: bold;
+  margin-bottom: 15px;
 }
 
 .faq_subtitle {
@@ -480,5 +482,5 @@ header nav ul li a:hover {
 
 .title1 {
   font-size: 36px;
-  font-family: 'Architects Daughter';
+  font-family: 'Shadows Into Light';
 }
