@@ -134,6 +134,11 @@ module.exports = function(app, passport, qs) {
 	  });
 	});
 
+	// getting started tutorial
+	app.get('/gettingstarted',isAuthenticated, function(req, res, next) {
+		res.render('gettingstarted', {title: 'Getting Started', user: req.user});
+	});
+
 	//UPVOTE/DOWNVOTE
 	app.get('/upvote', isAuthenticated, function(req, res, next){
 	  var uID = req.query.userID;

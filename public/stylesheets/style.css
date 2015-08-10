@@ -459,3 +459,25 @@ body.slide-active {
     width: 30px;
     height: 40px;
 }
+
+.faq {
+  width: 70%;
+  border: solid white 1px;
+  text-align: left
+}
+
+.faq_title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.faq_subtitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.faq_description {
+  margin-left: 25px;
+  margin-bottom: 20px; 
+}
