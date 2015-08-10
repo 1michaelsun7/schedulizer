@@ -264,6 +264,24 @@ module.exports = function(app, passport, qs) {
 
 	});
 
+	app.get('/removecontent', isAuthenticated, function(req, res, next){
+		console.log(req.query);
+		Content.findOne({eventId : req.query.eventID, url: req.query.conturl }, function(err, cont){
+			if (err){
+				console.log(err);
+				throw err;
+			}
+			console.log(cont);
+			cont.removeContentFromEvent(function(err){
+				if (err){
+					console.log("Error in remove content: " + err);
+					throw err;
+				}
+				res.redirect('/event?id=' + req.query.eventID);
+			});
+		});
+	});
+
 	//LOGIN AND LOGOUT
 	app.post('/login', passport.authenticate('login', {
 		successRedirect: '/main',
