@@ -264,6 +264,22 @@ header nav ul li a:hover {
   text-align: left;
 }
 
+/*notifications*/
+
+.notifcenter {
+  font-family: 'Dosis';
+  font-size: 24pt;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.notification{
+  text-align: left;
+  width: 100%;
+  padding: 30px;
+  border: 1px solid white;
+}
+
 /*events divs
 ---------------------------------------------------------------------------------------------------*/
 #wrapper h1 {
