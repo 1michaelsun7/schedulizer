@@ -78,14 +78,14 @@ section {
 -----------------------------------------------------------------------------*/
 @font-face {
     font-family: "KGS";
-    src: url("fonts/KGSecondChangeSolid.ttf") format(truetype);
+    src: url("KGSecondChangeSolid.ttf");
 }
 
 body {
   text-align: center;
   background: #a9a9a9;
   background-image: url("../images/Chalkboard.png");
-  font-family: 'Dosis';
+  font-family: 'Yanone Kaffeesatz';
   margin-top: 0; 
 }
 
@@ -93,7 +93,7 @@ body {
   width: 100%;
   text-align: center;
   color: white;
-  font-family: 'Dosis';
+  /*font-family: 'Dosis';*/
   float: left;
   margin-top: 60px;
 }
@@ -267,7 +267,7 @@ header nav ul li a:hover {
 /*events divs
 ---------------------------------------------------------------------------------------------------*/
 #wrapper h1 {
-  font-family: 'Dosis';
+  font-family: 'Yanone Kaffeesatz';
   font-size: 40px;
   margin: 10px;
 }
@@ -275,6 +275,7 @@ header nav ul li a:hover {
 #eventsWrapper{
   padding-top: 10px;
   padding-bottom: 10px;
+  font-family: 'Yanone Kaffeesatz';
   /*overflow-y: scroll;*/
 }
 
@@ -329,7 +330,10 @@ header nav ul li a:hover {
 }
 
 .eventTitle {
-  font-size: 20pt;
+  font-family: 'Shadows Into Light';
+  font-size: 18pt;
+  font-weight: bold;
+  color: #FFFF66;
 }
 
 .eventDesc {
@@ -461,7 +465,6 @@ header nav ul li a:hover {
 .faq_title {
   font-size: 24px;
   font-weight: bold;
-  /*font-family: "KGS";*/
 }
 
 .faq_subtitle {
@@ -473,4 +476,9 @@ header nav ul li a:hover {
 .faq_description {
   margin-left: 25px;
   margin-bottom: 20px; 
+}
+
+.title1 {
+  font-size: 36px;
+  font-family: 'Architects Daughter';
 }
