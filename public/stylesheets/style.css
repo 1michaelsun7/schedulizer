@@ -374,6 +374,16 @@ header nav ul li a:hover {
 
 /*single event*/
 
+.likeEvent{
+  text-align: left;
+  float: left;
+  margin: 0;
+}
+
+.eventDescript{
+  text-align: center;
+}
+
 #add-website {
   float:right;
   margin-right: 10px;
