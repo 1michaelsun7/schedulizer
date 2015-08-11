@@ -137,7 +137,6 @@ module.exports = function(app, passport, qs) {
 			});
 			
 		});
-		// res.render('main', { title: 'Main Page', user: req.user });
 	});
 
 	app.get('/myEvents', isAuthenticated, function(req, res, next) {
@@ -186,12 +185,12 @@ module.exports = function(app, passport, qs) {
 	  	if (err){
 	  		console.log(err);
 	  	}
-	  	if (!contains(evt.attendees, uID)){
-	  		evt.signupUserForEvent(uID, function(){
-	  			res.send(''+evt.upvotes);
-	  		});
-	  	}
-	  });
+		if (!contains(evt.attendees, uID)){
+			evt.signupUserForEvent(uID, function(){
+				res.send(''+evt.upvotes);
+			});
+		}
+	});
 	  
 	});
 
@@ -281,8 +280,6 @@ module.exports = function(app, passport, qs) {
 			
 			u.isAdmin = true;
 			u.save();
-
-			console.log(u);
 		})
 	});
 
@@ -294,7 +291,6 @@ module.exports = function(app, passport, qs) {
 			
 			u.isAdmin = false;
 			u.save();
-			console.log(u);
 		})
 	});
 
