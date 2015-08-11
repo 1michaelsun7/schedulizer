@@ -47,12 +47,27 @@ module.exports = function(app, passport, qs) {
 	  
 	});
 
+	app.get('/archive', isAuthenticated, function(req, res, next){
+		var allevents = [];
+		Event.getAllEvents(function(err, events){
+			if (err){
+				console.log("Error Loading Events");
+				throw err;
+			}
+			events.forEach(function(ev){
+				allevents.push(ev);
+			});
+			res.render('archive', { title: 'After Three Event Archive', user: req.user, allevents: allevents});
+		});
+	});
+
 	app.get('/event', isAuthenticated, function(req, res, next) {
 	  var passedEventId = req.query.id;
 	  var eventContent = [];
 	  Content.getAllContentForEvent(passedEventId, function(err, c){
 	  	if (err){
 	  		console.log("Error Loading Content");
+	  		throw err;
 	  	} else {
 	  		c.forEach(function(ct){
 	  			eventContent.push(ct);
@@ -285,7 +300,6 @@ module.exports = function(app, passport, qs) {
 
 	//CONTENTIFY
 	app.post('/addcontent', isAuthenticated, function(req, res, next){
-		console.log(req.body);
 		var body = req.body;
 		var cont = new Content();
 		cont.name = body.conturl;
@@ -296,9 +310,14 @@ module.exports = function(app, passport, qs) {
 			if (err){
 				console.log('Error in save content: ' + err);
 				throw err;
-			} else {
-				res.redirect('/event?id=' + body.eventID);
 			}
+			var note = new Notif();
+			note.text = "Content added to event " + body.eventname + ".";
+			note.eventId = body.eventID;
+			note.save(function(err, newnote){
+				res.redirect('/event?id=' + body.eventID);
+			});
+			
 		});
 
 	});
