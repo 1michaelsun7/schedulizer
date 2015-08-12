@@ -14,9 +14,11 @@ block content_scripts
 		$(function(){
 			$('.notification').each(function(n){
 				if ($(this).text().indexOf("sponsored by") > -1){
-					$(this).css("color", "blue");
+					$(this).css("border", "2px solid #EE82EE");
 				} else if ($(this).text().indexOf("scheduled for") > -1){
-					$(this).css("color", "green");
+					$(this).css("border", "2px solid #FFD700");
+				} else {
+					$(this).css("border", "2px solid #00BFFF");
 				}
-			})
+			});
 		});
