@@ -130,17 +130,21 @@ body {
   width: 50%;
 }
 .right_panel {
-  float: right;
+  float: left;
   width: 50%;
-  padding-right: 100px;
+  margin-left: -150px;
+  max-width: 500px;
 }
 .title_desc{
   float: left; 
-  font-size: 24px;
+  font-size: 32px;
   margin-top: 50px;
   margin-bottom: 50px;
+  font-family: 'Cabin Sketch';
 }
 .index_message {
+  font-family: 'Cabin Sketch';
+  font-size: 24px;
   display: inline-block;
 }
 
@@ -152,6 +156,18 @@ body {
 .error-message {
   margin-top: 10%;
   color: red;
+}
+
+.bottom_panel {
+  margin: 50px;
+  display: block;
+  float: right;
+}
+
+.email {
+  font-family: 'Cabin Sketch';
+  font-size: 24px;
+  color: #fad48b;
 }
 
 
@@ -226,7 +242,8 @@ header nav ul li a:hover {
   float: right;
   height: auto;
   width: 80%;
-  margin: 10px;
+  margin-top: 10px;
+  margin-right: -100px;
 }
 
 /* Side navbar
