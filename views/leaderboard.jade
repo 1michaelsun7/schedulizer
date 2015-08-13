@@ -17,9 +17,6 @@ block content2
 						span.glyphicon.glyphicon-arrow-up #{evt.upvotes}
 				div.col-xs-4(onclick="window.location='/event?id=#{evt._id}'")
 					div.eventTitle #{evt.name}
-						if evt.category=="category1"
-							span.glyphicons.glyphicons-person-running
-
 					div.eventDesc #{evt.description}
 					
 				div.col-xs-3
